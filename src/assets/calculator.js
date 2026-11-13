@@ -66,8 +66,9 @@
         };
     $('r-title').textContent = rec.title; $('r-price').textContent = rec.price; $('r-qual').textContent = rec.qual; $('r-note').textContent = rec.note;
     const f = $('leadForm').elements;
-    f.f_industry.value = ind.options[ind.selectedIndex].text; f.f_headcount.value = hc; f.f_departures.value = tc;
-    f.f_salary.value = sal; f.f_level.value = band.label; f.f_range.value = range; f.f_offer.value = rec.title;
+    // Field names match the Wix calculator, so lead emails from Formspree look the same as before.
+    f.industry_value.value = ind.options[ind.selectedIndex].text; f.headcount.value = hc; f.departures.value = tc;
+    f.average_pay.value = sal; f.role_level.value = band.label; f.estimated_range.value = range; f.recommended_offer.value = rec.title;
   }
 
   ind.addEventListener('change', () => { if (!levelTouched) lvl.value = defaultLevel(); render(); });

@@ -395,8 +395,8 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
           <div class="field"><label for="leadName">Name</label><input id="leadName" name="name" autocomplete="name" required></div>
           <div class="field"><label for="leadOrg">Organization</label><input id="leadOrg" name="organization" autocomplete="organization" required></div>
           <div class="field"><label for="leadEmail">Work email</label><input id="leadEmail" name="email" type="email" autocomplete="email" required></div>
-          <input type="hidden" name="f_industry"><input type="hidden" name="f_headcount"><input type="hidden" name="f_departures"><input type="hidden" name="f_salary"><input type="hidden" name="f_level"><input type="hidden" name="f_range"><input type="hidden" name="f_offer">
-          <input type="hidden" name="_subject" value="Turnover Drag Calculator lead">
+          <input type="hidden" name="industry_value"><input type="hidden" name="headcount"><input type="hidden" name="departures"><input type="hidden" name="average_pay"><input type="hidden" name="role_level"><input type="hidden" name="estimated_range"><input type="hidden" name="recommended_offer">
+          <input type="hidden" name="_subject" value="New drag calculator submission">
           <div class="hp" aria-hidden="true"><label for="lead-gotcha">Leave this empty</label><input id="lead-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn-fill" type="submit">Show my next step</button>
           <p class="form-status" role="status" aria-live="polite"></p>
