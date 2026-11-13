@@ -40,6 +40,7 @@ const banned = [
   [/undefined|\bnull\b|\[object Object\]/, 'a template value that did not resolve'],
 ];
 
+const siteBase = site.canonicalDomain || `${site.previewOrigin}${site.basePath}`;
 const files = await walk(dist);
 const html = files.filter((f) => f.endsWith('.html'));
 const titles = new Map();
@@ -70,13 +71,37 @@ for (const f of html) {
   for (const m of h.matchAll(/<img\b[^>]*>/g)) if (!/\salt="/.test(m[0])) errors.push(`${rel}: image without alt: ${m[0].slice(0, 80)}`);
   if (/\sstyle="/.test(h)) errors.push(`${rel}: inline style attribute (use site.css)`);
 
+  // Structured data: must parse, describe the organization, and match the visible FAQ word for word.
+  const ldRaw = h.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+  if (!ldRaw) errors.push(`${rel}: missing structured data`);
+  else {
+    let ld = null;
+    try { ld = JSON.parse(ldRaw); } catch (e) { errors.push(`${rel}: structured data does not parse: ${e.message}`); }
+    const graph = ld?.['@graph'] || [];
+    if (!graph.some((n) => n['@type'] === 'Organization')) errors.push(`${rel}: structured data lacks the Organization`);
+    const faqNode = graph.find((n) => n['@type'] === 'FAQPage');
+    const visibleQs = [...h.matchAll(/<summary><h3>([\s\S]*?)<\/h3><\/summary>/g)].map((m) => m[1]);
+    const schemaQs = faqNode ? faqNode.mainEntity.map((q) => q.name) : [];
+    if (JSON.stringify(visibleQs) !== JSON.stringify(schemaQs)) errors.push(`${rel}: FAQ structured data does not match the visible questions`);
+    for (const id of JSON.stringify(graph).matchAll(/"@id":"([^"]+)"/g)) {
+      if (!id[1].startsWith(siteBase)) errors.push(`${rel}: structured data id outside the site: ${id[1]}`);
+    }
+  }
+  // Share image and icons must exist.
+  const og = h.match(/<meta property="og:image" content="([^"]+)">/)?.[1];
+  if (!og) errors.push(`${rel}: missing og:image`);
+  else if (!(await exists(path.join(dist, og.slice(siteBase.length))))) errors.push(`${rel}: og:image file not found: ${og}`);
+  if (!/<meta name="twitter:card" content="summary_large_image">/.test(h)) errors.push(`${rel}: missing twitter card`);
+  if (site.canonicalDomain && !/<link rel="canonical" href="/.test(h)) errors.push(`${rel}: missing canonical link`);
+
   const text = textOf(h);
   for (const [re, what] of banned) if (re.test(text) || (what.includes('dash') && re.test(h))) errors.push(`${rel}: contains ${what}`);
 
   for (const m of h.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
     const url = m[1];
     if (/^(https?:|mailto:|tel:|data:)/.test(url)) {
-      if (/noalumni\.com\/(?!$)/.test(url) && !/results\.noalumni\.com/.test(url)) warnings.push(`${rel}: absolute link to ${url}; use a site path`);
+      // In-page links to our own pages should be site paths; canonical and share tags are absolute on purpose.
+      if (/noalumni\.com\/(?!$)/.test(url) && !/results\.noalumni\.com/.test(url) && h.includes(`<a href="${url}"`)) warnings.push(`${rel}: absolute link to ${url}; use a site path`);
       continue;
     }
     if (url.startsWith('#')) {
@@ -93,6 +118,19 @@ for (const f of html) {
 for (const [t, where] of titles) if (where.length > 1) errors.push(`duplicate title "${t}" on ${where.join(', ')}`);
 for (const p of ['index.html', '404.html', 'what-we-offer/index.html', 'working-genius/index.html', 'who-we-are/index.html', 'contact-us/index.html', 'shop/index.html', 'drag-calculator/index.html', 'jma/index.html', 'ppa/index.html', 'commodore/index.html'])
   if (!(await exists(path.join(dist, p)))) errors.push(`required page missing: ${p} (it exists on the current site)`);
+
+// Files search engines and AI assistants look for.
+for (const p of ['robots.txt', 'llms.txt', 'llms-full.txt', 'favicon.ico'])
+  if (!(await exists(path.join(dist, p)))) errors.push(`missing ${p}`);
+const robots = await readFile(path.join(dist, 'robots.txt'), 'utf8');
+if (/^Disallow:\s*\/\s*$/m.test(robots)) errors.push('robots.txt blocks the whole site');
+if (site.allowIndexing && site.canonicalDomain) {
+  const sm = await readFile(path.join(dist, 'sitemap.xml'), 'utf8').catch(() => '');
+  for (const p of ['/', '/what-we-offer/', '/working-genius/', '/who-we-are/', '/contact-us/', '/drag-calculator/'])
+    if (!sm.includes(`<loc>${site.canonicalDomain}${p}</loc>`)) errors.push(`sitemap.xml is missing ${p}`);
+}
+const llmsFull = await readFile(path.join(dist, 'llms-full.txt'), 'utf8');
+for (const [re, what] of banned) if (re.test(llmsFull)) errors.push(`llms-full.txt contains ${what}`);
 
 for (const w of warnings) console.warn('warning:', w);
 if (errors.length) {

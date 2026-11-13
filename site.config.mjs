@@ -9,10 +9,17 @@ export default {
   // canonicalDomain to 'https://www.noalumni.com', and add the custom domain in Settings > Pages.
   basePath: '/noalumni-site',
   canonicalDomain: null,
+  // Absolute origin used for share images and structured data while there is no canonical domain yet.
+  previewOrigin: 'https://mattlafleur-cle.github.io',
 
   // Search indexing stays OFF during the preview so it never competes with the live Wix site.
   // Every page carries noindex until this is true (which requires canonicalDomain).
   allowIndexing: false,
+
+  founded: '2023',
+  // How the organization describes itself to search and answer engines (structured data, llms.txt).
+  summary: 'No Alumni is a national community, movement, and network, established in 2023, that celebrates every path to success, including the skilled trades and other careers that do not require a college degree. No Alumni also helps businesses, schools, and organizations with AI consulting, training and upskilling, The 6 Types of Working Genius, and workplace culture consulting.',
+  areaServed: 'United States',
 
   tagline: 'A national community and movement celebrating every path to success, and helping teams and organizations thrive.',
 
@@ -38,6 +45,11 @@ export default {
   eventsUrl: 'https://www.eventbrite.com/o/no-alumni-121363530237',
   workingGeniusAssessmentUrl: 'https://myformflow.io/no-alumni/workinggenius',
   trustpilotUrl: 'https://www.trustpilot.com/review/noalumni.com',
+
+  podcast: {
+    name: 'New Game Old Game',
+    description: 'The No Alumni podcast: real stories from people who took a different path.',
+  },
 
   socials: [
     { name: 'Facebook', url: 'https://www.facebook.com/share/1G2vV5yt9T/?mibextid=wwXIfr' },

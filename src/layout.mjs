@@ -28,9 +28,90 @@ export function socialLinks(site) {
     .join('');
 }
 
-export function pageShell({ site, link, page, body }) {
+// Absolute site address: the real domain once set, otherwise the preview address (for share images and schema).
+export const siteUrl = (site) => site.canonicalDomain || `${site.previewOrigin}${site.basePath}`;
+const abs = (site, p) => `${siteUrl(site)}${p}`;
+
+// Organization, website, podcast and team: the shared graph every page carries, so answer engines
+// see one consistent description of No Alumni wherever they land.
+export function baseGraph(site, team = []) {
+  const org = `${siteUrl(site)}/#organization`;
+  return [
+    {
+      '@type': 'Organization',
+      '@id': org,
+      name: site.siteName,
+      url: `${siteUrl(site)}/`,
+      logo: { '@type': 'ImageObject', url: abs(site, '/assets/brand/logo-512.png'), width: 512, height: 512 },
+      image: abs(site, '/assets/og-image.jpg'),
+      description: site.summary,
+      slogan: 'You are not less than. We are No Alumni.',
+      foundingDate: site.founded,
+      email: site.contact.email,
+      telephone: `+1-${site.contact.phone}`,
+      areaServed: { '@type': 'Country', name: site.areaServed },
+      knowsAbout: ['Skilled trades', 'Alternative career paths', 'Workforce development', 'The 6 Types of Working Genius', 'Workplace culture', 'Employee retention', 'Employee turnover cost', 'AI consulting', 'AI training', 'Upskilling and certifications'],
+      contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: site.contact.email, telephone: `+1-${site.contact.phone}`, areaServed: 'US', availableLanguage: 'English' },
+      sameAs: site.socials.map((s) => s.url).concat([site.shopUrl, site.eventsUrl]),
+      member: team.map((p) => ({ '@id': `${siteUrl(site)}/who-we-are/#${p.id}` })),
+    },
+    { '@type': 'WebSite', '@id': `${siteUrl(site)}/#website`, url: `${siteUrl(site)}/`, name: site.siteName, description: site.tagline, publisher: { '@id': org }, inLanguage: 'en-US' },
+    ...team.map((p) => ({
+      '@type': 'Person',
+      '@id': `${siteUrl(site)}/who-we-are/#${p.id}`,
+      name: p.name,
+      email: p.email,
+      ...(p.photo ? { image: abs(site, p.photo) } : {}),
+      worksFor: { '@id': org },
+      url: `${siteUrl(site)}/who-we-are/#${p.id}`,
+    })),
+  ];
+}
+
+// Visible FAQ block. The same questions and answers feed the FAQPage structured data, so they always match.
+export function faqSection(faq, heading = 'Frequently asked questions') {
+  if (!faq?.length) return '';
+  return `
+<section class="section faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap narrow">
+    <p class="eyebrow">Answers</p>
+    <h2 id="faq-h">${heading}</h2>
+    ${faq.map(([q, a]) => `<details class="qa"><summary><h3>${q}</h3></summary><div class="qa-a"><p>${a}</p></div></details>`).join('\n    ')}
+  </div>
+</section>`;
+}
+
+export function pageShell({ site, link, page, body, graph = [] }) {
   const indexing = site.allowIndexing && site.canonicalDomain;
   const canonical = site.canonicalDomain ? `${site.canonicalDomain}${page.path}` : null;
+  const url = abs(site, page.path === '/404' ? '/' : page.path);
+  const shareImage = abs(site, `/assets/${page.ogImage || 'og-image.jpg'}`);
+  const crumbs = [{ name: 'Home', path: '/' }].concat(page.path === '/' || page.path === '/404' ? [] : [{ name: page.crumb || page.title.split(' | ')[0], path: page.path }]);
+  const ld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      ...graph,
+      {
+        '@type': page.pageType || 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: page.title,
+        description: page.description,
+        isPartOf: { '@id': `${siteUrl(site)}/#website` },
+        about: { '@id': `${siteUrl(site)}/#organization` },
+        primaryImageOfPage: { '@type': 'ImageObject', url: shareImage },
+        inLanguage: 'en-US',
+        ...(crumbs.length > 1 ? { breadcrumb: { '@id': `${url}#breadcrumb` } } : {}),
+      },
+      ...(crumbs.length > 1
+        ? [{ '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(site, c.path) })) }]
+        : []),
+      ...(page.faq?.length
+        ? [{ '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: page.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) }]
+        : []),
+      ...(page.schema || []),
+    ],
+  };
   const navItems = nav
     .map((n) => {
       const href = n.external ? site[n.external] : link(n.path);
@@ -46,12 +127,26 @@ export function pageShell({ site, link, page, body }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.description)}">
-${indexing ? '' : '<meta name="robots" content="noindex, nofollow">\n'}${canonical ? `<link rel="canonical" href="${canonical}">\n` : ''}<meta property="og:title" content="${esc(page.title)}">
+${indexing ? '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">\n' : '<meta name="robots" content="noindex, nofollow">\n'}${canonical ? `<link rel="canonical" href="${canonical}">\n` : ''}<meta property="og:title" content="${esc(page.title)}">
 <meta property="og:description" content="${esc(page.description)}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="${url}">
 <meta property="og:site_name" content="${esc(site.siteName)}">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="${shareImage}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(site.siteName)}: ${esc(site.tagline)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(page.title)}">
+<meta name="twitter:description" content="${esc(page.description)}">
+<meta name="twitter:image" content="${shareImage}">
 <meta name="theme-color" content="#0b0b0a">
-<link rel="icon" type="image/png" href="${link('/assets/brand/badge-interim.png')}">
+<link rel="icon" type="image/png" sizes="32x32" href="${link('/assets/brand/favicon-32.png')}">
+<link rel="icon" type="image/png" sizes="192x192" href="${link('/assets/brand/favicon-192.png')}">
+<link rel="apple-touch-icon" href="${link('/assets/brand/apple-touch-icon.png')}">
+<link rel="alternate" type="text/plain" title="Summary for AI assistants" href="${link('/llms.txt')}">
+<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
 <link rel="stylesheet" href="${link('/assets/site.css')}">
 <script src="${link('/assets/site.js')}" defer></script>
 </head>

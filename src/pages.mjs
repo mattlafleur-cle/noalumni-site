@@ -1,6 +1,6 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
-import { esc } from './layout.mjs';
+import { esc, faqSection, siteUrl } from './layout.mjs';
 
 const typesList = [
   ['W', 'Wonder', 'Pondering the possibility of greater potential and opportunity.'],
@@ -48,13 +48,58 @@ const offers = [
 ];
 
 // Team, in the order Matt set on 2026-11-13. Dave's email link pointed to matt@ on Wix; fixed here.
-const team = [
-  { name: 'Greg Snyder', email: 'greg@noalumni.com', photo: '/assets/team/greg.webp' },
-  { name: 'Matt LaFleur', email: 'matt@noalumni.com', photo: '/assets/team/matt.webp' },
-  { name: 'Dave Hall', email: 'dave@noalumni.com', photo: '/assets/team/dave.webp' },
-  { name: 'Josh Muller', email: 'josh@noalumni.com', photo: '/assets/team/josh.webp' },
-  { name: 'Nolan Snyder', email: 'nolan@noalumni.com', photo: '/assets/team/nolan.webp' },
+export const team = [
+  { id: 'greg-snyder', name: 'Greg Snyder', email: 'greg@noalumni.com', photo: '/assets/team/greg.webp' },
+  { id: 'matt-lafleur', name: 'Matt LaFleur', email: 'matt@noalumni.com', photo: '/assets/team/matt.webp' },
+  { id: 'dave-hall', name: 'Dave Hall', email: 'dave@noalumni.com', photo: '/assets/team/dave.webp' },
+  { id: 'josh-muller', name: 'Josh Muller', email: 'josh@noalumni.com', photo: '/assets/team/josh.webp' },
+  { id: 'nolan-snyder', name: 'Nolan Snyder', email: 'nolan@noalumni.com', photo: '/assets/team/nolan.webp' },
 ];
+
+const offerList = 'AI consulting, coaching, and services; certifications, training, and upskilling; a partner and marketplace community; The 6 Types of Working Genius; and workplace culture consulting';
+
+const FAQ = {
+  home: [
+    ['What is No Alumni?', 'No Alumni is a national community, movement, and network, established in 2023, that celebrates every path to success. We promote, illuminate, and equip skilled workers, entrepreneurs, and changemakers, and we help businesses, schools, and organizations build cultures where people thrive.'],
+    ['Is No Alumni against college?', 'No. We are not anti-college; we are pro-options. College is not for everyone, and that is okay. We believe everyone deserves a seat at the table and that every path, including the skilled trades and other non-college careers, has value.'],
+    ['Who is No Alumni for?', 'No Alumni is for the builders, creators, leaders, and dreamers who follow a different path, whether you are in the field, on the jobsite, or leading a team. It is also for employers, schools, and organizations that want to attract, develop, and keep great people.'],
+    ['What services does No Alumni offer?', `No Alumni offers ${offerList}. Each is tailored to the organization, from a single workshop to an ongoing partnership.`],
+    ['How do I get started with No Alumni?', 'Schedule a quick call or email connect@noalumni.com. We will talk about your team, school, or organization and suggest a practical next step.'],
+  ],
+  offer: [
+    ['How does No Alumni help organizations use AI?', 'We help organizations turn AI into real results: identifying practical use cases, building custom workflows, and training teams, so AI is simple, ethical, and effective.'],
+    ['What training and certifications does No Alumni provide?', 'We provide certifications, workshops, and tailored training that build practical skills, including soft skills, digital marketing, financial literacy, and AI-powered learning, along with microcredentials and hybrid training.'],
+    ['What is workplace culture consulting?', 'Workplace culture consulting helps an organization design a healthier, more effective culture. We use practical tools and tailored strategies to help teams build trust, improve communication, and align around shared values.'],
+    ['What is the No Alumni partner and marketplace community?', 'It connects learners, professionals, and organizations in one place for growth, so people can discover new pathways, collaborate across industries, find great talent, and unlock career and business potential.'],
+    ['Which No Alumni service is right for my organization?', 'Most organizations start with a short conversation about where work gets stuck, then choose a service that fits. You can also use the free Turnover Drag Calculator to see what turnover may be costing you.'],
+  ],
+  wg: [
+    ['What are the 6 Types of Working Genius?', 'The six types are Wonder (pondering greater potential and opportunity), Invention (creating original ideas and solutions), Discernment (evaluating ideas and plans using intuition and instinct), Galvanizing (rallying people to act), Enablement (giving people the support and help they need), and Tenacity (pushing work through to completion).'],
+    ['What is the difference between a working genius, a competency, and a frustration?', 'Each person has two areas of working genius that give them energy and joy, two working competencies they can do fairly well for a while, and two working frustrations that drain their energy.'],
+    ['Who created The 6 Types of Working Genius?', 'The 6 Types of Working Genius is a model created by Patrick Lencioni and The Table Group. No Alumni uses it with teams and organizations.'],
+    ['How do I take the Working Genius assessment?', 'Use the Take the assessment button on this page. After you finish, we can walk you through your results, or map your whole team.'],
+    ['How does Working Genius help reduce turnover?', 'When people spend more of their day on work that gives them energy, they are more engaged and less likely to burn out. A team map shows where work stalls, which geniuses are missing, and who can take on what.'],
+  ],
+  who: [
+    ['What is the mission of No Alumni?', 'Our mission is to promote, illuminate, and equip. We promote the voices of people who chose a different path, illuminate real stories of how they got where they are, and equip people and businesses with tools, training, and community resources.'],
+    ['Who is on the No Alumni team?', 'The No Alumni team includes Greg Snyder, Matt LaFleur, Dave Hall, Josh Muller, and Nolan Snyder.'],
+    ['When was No Alumni founded?', 'No Alumni was established in 2023.'],
+    ['How can I get involved with No Alumni?', 'Follow us on social media, listen to the New Game Old Game podcast, wear No Alumni gear, or contact us to book a speaker, bring our message to your school, or start a conversation with your business or team.'],
+  ],
+  contact: [
+    ['How do I contact No Alumni?', 'Email connect@noalumni.com, call 216-550-4689, use the form on this page, or schedule a quick call online.'],
+    ['Can I book a No Alumni speaker?', 'Yes. Contact us to book a speaker for your event, school, or organization.'],
+    ['Does No Alumni work with schools?', 'Yes. Contact us to bring our message to your school or career-tech program, or to talk about training and workforce development for students.'],
+  ],
+  calc: [
+    ['How much does employee turnover cost?', 'Published benchmarks put the cost of replacing an employee at roughly 50% to 200% of their annual salary, depending on the role level (SHRM and Gallup), and as high as 213% for executives (Center for American Progress). Those figures cover replacement cost only, so the real cost is usually higher.'],
+    ['How does the Turnover Drag Calculator estimate the cost?', 'It multiplies the number of people who left in the past 12 months by their average annual pay, then applies a replacement-cost range for the typical role level: 50% to 75% for entry-level or hourly roles, 30% to 50% for teachers and instructional staff, 100% to 150% for mid-level, skilled trade, or technical roles, 150% to 200% for management or specialized roles, and 200% to 213% for executives.'],
+    ['What does the turnover estimate leave out?', 'The estimate covers replacement cost only. It leaves out lost productivity, customer impact, and management time, and in schools, lost instructional continuity and the effect on students.'],
+    ['What can an organization do to reduce turnover costs?', 'Most of the cost traces back to team misalignment, unclear roles, and communication friction rather than a shortage of talent. A readiness assessment shows where the cost is coming from, and a team workshop such as Working Genius addresses it directly.'],
+    ['Is the Turnover Drag Calculator free?', 'Yes. The calculator is free. Enter four things about your team to see the estimated range, then share your email if you want the next step we would recommend.'],
+  ],
+};
+
 const initials = (n) => n.split(' ').map((p) => p[0]).join('');
 
 const ctaBand = (site, link, heading = 'Ready to start a conversation?', text = 'Book a speaker, bring our message to your school, or talk with us about your business or team.') => `
@@ -72,8 +117,14 @@ const ctaBand = (site, link, heading = 'Ready to start a conversation?', text = 
 </section>`;
 
 export function pages(site, link) {
+  const base = siteUrl(site);
+  const org = { '@id': `${base}/#organization` };
+  const service = (o, url) => ({ '@type': 'Service', '@id': `${url}#${o.id}`, name: o.name.charAt(0).toUpperCase() + o.name.slice(1), description: o.body, provider: org, areaServed: { '@type': 'Country', name: site.areaServed }, url: `${url}#${o.id}` });
   const home = {
     key: 'home',
+    crumb: 'Home',
+    schema: [{ '@type': 'PodcastSeries', '@id': `${base}/#podcast`, name: site.podcast.name, description: site.podcast.description, url: site.socials.find((x) => x.name === 'Spotify').url, sameAs: site.socials.filter((x) => ['Spotify', 'Apple Podcasts', 'YouTube'].includes(x.name)).map((x) => x.url), publisher: org, inLanguage: 'en-US' }],
+    faq: FAQ.home,
     path: '/',
     title: 'No Alumni | Celebrating Alternative Career Paths and Vocational Joy',
     description: 'No Alumni celebrates skilled trades, modern work, and every path to success, and helps organizations build cultures where people thrive.',
@@ -158,12 +209,16 @@ export function pages(site, link) {
     </div>
   </div>
 </section>
+${faqSection(FAQ.home)}
 ${ctaBand(site, link, 'Get in touch', `For inquiries and partnerships, schedule a quick call or email us at <a href="mailto:${site.contact.email}">${site.contact.email}</a>.`)}
 `,
   };
 
   const whatWeOffer = {
     key: 'what-we-offer',
+    crumb: 'What We Offer',
+    schema: offers.map((o) => service(o, `${base}/what-we-offer/`)),
+    faq: FAQ.offer,
     path: '/what-we-offer/',
     title: 'What We Offer | No Alumni',
     description: 'AI consulting, training and upskilling, a partner community, Working Genius, and workplace culture consulting from No Alumni.',
@@ -185,12 +240,16 @@ ${ctaBand(site, link, 'Get in touch', `For inquiries and partnerships, schedule 
     ${offers.map((o) => `<article class="card" id="${o.id}"><span class="tag">${o.tag}</span><h2 class="card-h">${o.name}</h2><p>${o.body}</p>${o.more ? `<a class="card-link" href="${link(o.more)}">${o.moreLabel || 'Learn more'}</a>` : ''}</article>`).join('\n    ')}
   </div>
 </section>
+${faqSection(FAQ.offer)}
 ${ctaBand(site, link, 'Not sure where to start?', 'Tell us about your team in a short call. You’ll leave with a practical next step, whether or not we ever work together.')}
 `,
   };
 
   const workingGenius = {
     key: 'working-genius',
+    crumb: 'Working Genius',
+    schema: [{ '@type': 'Service', '@id': `${base}/working-genius/#service`, name: 'The 6 Types of Working Genius assessments, team maps, and workshops', serviceType: 'Team development', description: 'Working Genius assessments for individuals and teams, team maps that show where work stalls and which geniuses are missing, and working sessions that turn the results into real changes in roles and handoffs.', provider: org, areaServed: { '@type': 'Country', name: site.areaServed }, url: `${base}/working-genius/` }],
+    faq: FAQ.wg,
     path: '/working-genius/',
     title: 'The 6 Types of Working Genius | No Alumni',
     description: 'Working Genius helps teams find their natural strengths, reduce frustration, and build an engaged workforce, no degree required. Take the assessment.',
@@ -238,12 +297,16 @@ ${ctaBand(site, link, 'Not sure where to start?', 'Tell us about your team in a 
     </div>
   </div>
 </section>
+${faqSection(FAQ.wg, 'Working Genius questions')}
 ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the assessment, or talk with us about a team map and a working session built around your results.')}
 `,
   };
 
   const whoWeAre = {
     key: 'who-we-are',
+    crumb: 'Who We Are',
+    faq: FAQ.who,
+    pageType: 'AboutPage',
     path: '/who-we-are/',
     title: 'Who We Are | No Alumni',
     description: 'No Alumni challenges the idea that college is the only path to a meaningful life. Meet the movement, our mission, and the faces of No Alumni.',
@@ -275,7 +338,7 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
     <h2>Your neighbors, and we need you to join us.</h2>
     <p class="lead">An expert, eclectic, and specialized team of leaders, innovators, and practitioners who bring diverse strengths together to inspire tomorrow’s workforce and redefine what’s possible.</p>
     <div class="people">
-      ${team.map((p) => `<div class="person">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
+      ${team.map((p) => `<div class="person" id="${p.id}">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
     </div>
   </div>
 </section>
@@ -287,11 +350,15 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
     <a class="btn btn-fill" href="${link('/contact-us/')}">Get involved</a>
   </div>
 </section>
+${faqSection(FAQ.who, 'About No Alumni')}
 `,
   };
 
   const contact = {
     key: 'contact-us',
+    crumb: 'Contact Us',
+    faq: FAQ.contact,
+    pageType: 'ContactPage',
     path: '/contact-us/',
     title: 'Contact Us | No Alumni',
     description: 'Book a speaker, bring the No Alumni message to your school, or start a conversation with your business or team. Email, call, or schedule a time.',
@@ -335,11 +402,13 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
     </ul>
   </div>
 </section>
+${faqSection(FAQ.contact)}
 `,
   };
 
   const shop = {
     key: 'shop',
+    crumb: 'Shop',
     path: '/shop/',
     title: 'Shop No Alumni Gear | No Alumni',
     description: 'No Alumni hoodies, heavyweight tees, trucker hats, beanies, and stickers, made on demand to avoid waste. Rep the movement.',
@@ -358,6 +427,9 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
 
   const calculator = {
     key: 'drag-calculator',
+    crumb: 'Turnover Drag Calculator',
+    schema: [{ '@type': 'WebApplication', '@id': `${base}/drag-calculator/#app`, name: 'Turnover Drag Calculator', url: `${base}/drag-calculator/`, description: 'A free calculator that estimates the annual replacement cost of employee turnover from headcount, departures, average pay, and role level, using published SHRM, Gallup, and Center for American Progress benchmarks.', applicationCategory: 'BusinessApplication', operatingSystem: 'Any', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, publisher: org }],
+    faq: FAQ.calc,
     path: '/drag-calculator/',
     title: 'Turnover Drag Calculator: What Is Turnover Costing You? | No Alumni',
     description: 'Estimate what hiring and retention friction is costing your organization each year, and see a practical next step.',
@@ -416,6 +488,26 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
     <p class="fineprint">Sources: SHRM and Gallup turnover-cost estimates (50% to 200% of annual salary), Center for American Progress (executive turnover up to 213%), and the Learning Policy Institute (roughly $25,000 to replace one teacher in large districts). These are directional planning figures for your own use, not a quote for any specific organization. Estimates assume each departure had to be replaced.</p>
   </div>
 </section>
+<section class="section section-alt">
+  <div class="wrap narrow">
+    <p class="eyebrow">How it works</p>
+    <h2>How we estimate what turnover costs</h2>
+    <p>Every departure has to be replaced: recruiting, interviewing, onboarding, and the months it takes a new person to get up to speed. The calculator multiplies the people who left in the past year by their average pay, then applies a published replacement-cost range for the level of those roles.</p>
+    <table class="bands">
+      <caption>Replacement cost as a share of annual pay</caption>
+      <thead><tr><th scope="col">Typical role level</th><th scope="col">Low</th><th scope="col">High</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Entry-level / hourly</th><td>50%</td><td>75%</td></tr>
+        <tr><th scope="row">Teacher / instructional staff</th><td>30%</td><td>50%</td></tr>
+        <tr><th scope="row">Mid-level / skilled trade or technical</th><td>100%</td><td>150%</td></tr>
+        <tr><th scope="row">Management / specialized</th><td>150%</td><td>200%</td></tr>
+        <tr><th scope="row">Executive / leadership</th><td>200%</td><td>213%</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Example:</strong> a 45-person skilled trades company that lost 9 people averaging $52,000 a year is looking at roughly $468,000 to $702,000 in replacement cost alone.</p>
+  </div>
+</section>
+${faqSection(FAQ.calc, 'Turnover cost questions')}
 <script src="${link('/assets/calculator.js')}" defer></script>
 `,
   };
