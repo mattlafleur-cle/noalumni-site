@@ -29,6 +29,14 @@ export function socialLinks(site) {
 }
 
 // Absolute site address: the real domain once set, otherwise the preview address (for share images and schema).
+// Where we work: home region first, then everywhere else we serve.
+export const areaServed = (site) => [
+  { '@type': 'Place', name: 'Northeast Ohio' },
+  { '@type': 'State', name: 'Ohio' },
+  { '@type': 'Country', name: 'United States' },
+  'Worldwide',
+];
+
 export const siteUrl = (site) => site.canonicalDomain || `${site.previewOrigin}${site.basePath}`;
 const abs = (site, p) => `${siteUrl(site)}${p}`;
 
@@ -49,9 +57,11 @@ export function baseGraph(site, team = []) {
       foundingDate: site.founded,
       email: site.contact.email,
       telephone: `+1-${site.contact.phone}`,
-      areaServed: { '@type': 'Country', name: site.areaServed },
+      areaServed: areaServed(site),
+      address: { '@type': 'PostalAddress', addressRegion: site.location.state, addressCountry: site.location.country },
+      location: { '@type': 'Place', name: site.location.region, address: { '@type': 'PostalAddress', addressRegion: site.location.state, addressCountry: site.location.country } },
       knowsAbout: ['Skilled trades', 'Alternative career paths', 'Workforce development', 'The 6 Types of Working Genius', 'Workplace culture', 'Employee retention', 'Employee turnover cost', 'AI consulting', 'AI training', 'Upskilling and certifications'],
-      contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: site.contact.email, telephone: `+1-${site.contact.phone}`, areaServed: 'US', availableLanguage: 'English' },
+      contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: site.contact.email, telephone: `+1-${site.contact.phone}`, areaServed: 'Worldwide', availableLanguage: 'English' },
       sameAs: site.socials.map((s) => s.url).concat([site.shopUrl, site.eventsUrl]),
       member: team.map((p) => ({ '@id': `${siteUrl(site)}/who-we-are/#${p.id}` })),
     },
@@ -173,6 +183,7 @@ ${body}
     <div>
       <img class="footer-badge" src="${link('/assets/brand/badge.webp')}" alt="No Alumni, established 2023" width="88" height="88">
       <p class="footer-tag">${esc(site.tagline)}</p>
+      <p class="footer-tag">${esc(site.areaServedLine)}</p>
     </div>
     <div>
       <h2 class="footer-h">Get in touch</h2>

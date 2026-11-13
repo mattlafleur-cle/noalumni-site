@@ -18,8 +18,10 @@ export default {
 
   founded: '2023',
   // How the organization describes itself to search and answer engines (structured data, llms.txt).
-  summary: 'No Alumni is a national community, movement, and network, established in 2023, that celebrates every path to success, including the skilled trades and other careers that do not require a college degree. No Alumni also helps businesses, schools, and organizations with AI consulting, training and upskilling, The 6 Types of Working Genius, and workplace culture consulting.',
-  areaServed: 'United States',
+  summary: 'No Alumni is a national community, movement, and network based in Northeast Ohio, established in 2023, that celebrates every path to success, including the skilled trades and other careers that do not require a college degree. No Alumni also helps businesses, schools, and organizations with AI consulting, training and upskilling, The 6 Types of Working Genius, and workplace culture consulting, for clients and companies across the United States and around the world.',
+  // Home base and reach (Matt, 2026-11-13): based in Northeast Ohio, with clients across the globe.
+  location: { region: 'Northeast Ohio', state: 'OH', country: 'US' },
+  areaServedLine: 'Based in Northeast Ohio, working with clients and companies across the country and around the world.',
 
   tagline: 'A national community and movement celebrating every path to success, and helping teams and organizations thrive.',
 

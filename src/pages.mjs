@@ -1,6 +1,6 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
-import { esc, faqSection, siteUrl } from './layout.mjs';
+import { esc, faqSection, siteUrl, areaServed } from './layout.mjs';
 
 const typesList = [
   ['W', 'Wonder', 'Pondering the possibility of greater potential and opportunity.'],
@@ -60,8 +60,9 @@ const offerList = 'AI consulting, coaching, and services; certifications, traini
 
 const FAQ = {
   home: [
-    ['What is No Alumni?', 'No Alumni is a national community, movement, and network, established in 2023, that celebrates every path to success. We promote, illuminate, and equip skilled workers, entrepreneurs, and changemakers, and we help businesses, schools, and organizations build cultures where people thrive.'],
+    ['What is No Alumni?', 'No Alumni is a national community, movement, and network based in Northeast Ohio, established in 2023, that celebrates every path to success. We promote, illuminate, and equip skilled workers, entrepreneurs, and changemakers, and we help businesses, schools, and organizations build cultures where people thrive.'],
     ['Is No Alumni against college?', 'No. We are not anti-college; we are pro-options. College is not for everyone, and that is okay. We believe everyone deserves a seat at the table and that every path, including the skilled trades and other non-college careers, has value.'],
+    ['Where is No Alumni based?', 'No Alumni is based in Northeast Ohio. We work with clients and companies across the United States and around the world.'],
     ['Who is No Alumni for?', 'No Alumni is for the builders, creators, leaders, and dreamers who follow a different path, whether you are in the field, on the jobsite, or leading a team. It is also for employers, schools, and organizations that want to attract, develop, and keep great people.'],
     ['What services does No Alumni offer?', `No Alumni offers ${offerList}. Each is tailored to the organization, from a single workshop to an ongoing partnership.`],
     ['How do I get started with No Alumni?', 'Schedule a quick call or email connect@noalumni.com. We will talk about your team, school, or organization and suggest a practical next step.'],
@@ -84,6 +85,7 @@ const FAQ = {
     ['What is the mission of No Alumni?', 'Our mission is to promote, illuminate, and equip. We promote the voices of people who chose a different path, illuminate real stories of how they got where they are, and equip people and businesses with tools, training, and community resources.'],
     ['Who is on the No Alumni team?', 'The No Alumni team includes Greg Snyder, Matt LaFleur, Dave Hall, Josh Muller, and Nolan Snyder.'],
     ['When was No Alumni founded?', 'No Alumni was established in 2023.'],
+    ['Where does No Alumni work?', 'No Alumni is based in Northeast Ohio and works with clients and companies across the United States and around the world.'],
     ['How can I get involved with No Alumni?', 'Follow us on social media, listen to the New Game Old Game podcast, wear No Alumni gear, or contact us to book a speaker, bring our message to your school, or start a conversation with your business or team.'],
   ],
   contact: [
@@ -119,7 +121,7 @@ const ctaBand = (site, link, heading = 'Ready to start a conversation?', text = 
 export function pages(site, link) {
   const base = siteUrl(site);
   const org = { '@id': `${base}/#organization` };
-  const service = (o, url) => ({ '@type': 'Service', '@id': `${url}#${o.id}`, name: o.name.charAt(0).toUpperCase() + o.name.slice(1), description: o.body, provider: org, areaServed: { '@type': 'Country', name: site.areaServed }, url: `${url}#${o.id}` });
+  const service = (o, url) => ({ '@type': 'Service', '@id': `${url}#${o.id}`, name: o.name.charAt(0).toUpperCase() + o.name.slice(1), description: o.body, provider: org, areaServed: areaServed(site), url: `${url}#${o.id}` });
   const home = {
     key: 'home',
     crumb: 'Home',
@@ -132,7 +134,7 @@ export function pages(site, link) {
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">Est. 2023 · A national community and movement</p>
+      <p class="eyebrow">Est. 2023 · Based in Northeast Ohio · Working worldwide</p>
       <h1>We modernize culture for people, education, and business.</h1>
       <p class="lead">College isn’t for everyone, and that’s okay. We celebrate every path to success and help teams, schools, and organizations build workplaces where people do their best work.</p>
       <div class="btn-row">
@@ -151,7 +153,7 @@ export function pages(site, link) {
       <h2>A community redefining what success looks like.</h2>
     </div>
     <div>
-      <p>A national community, movement, and network. Whether you’re in the field, on the jobsite, or leading a team, you belong here.</p>
+      <p>A national community, movement, and network based in Northeast Ohio, working with people and companies across the country and around the world. Whether you’re in the field, on the jobsite, or leading a team, you belong here.</p>
       <p>We’re here to promote, illuminate, and equip the next generation of skilled workers, entrepreneurs, and changemakers. We celebrate all paths to success and provide the tools to thrive in a modern, evolving workforce.</p>
       <p><strong>Our community needs you, and you are welcome here.</strong></p>
       <a class="card-link" href="${link('/who-we-are/')}">Our story and our team</a>
@@ -248,7 +250,7 @@ ${ctaBand(site, link, 'Not sure where to start?', 'Tell us about your team in a 
   const workingGenius = {
     key: 'working-genius',
     crumb: 'Working Genius',
-    schema: [{ '@type': 'Service', '@id': `${base}/working-genius/#service`, name: 'The 6 Types of Working Genius assessments, team maps, and workshops', serviceType: 'Team development', description: 'Working Genius assessments for individuals and teams, team maps that show where work stalls and which geniuses are missing, and working sessions that turn the results into real changes in roles and handoffs.', provider: org, areaServed: { '@type': 'Country', name: site.areaServed }, url: `${base}/working-genius/` }],
+    schema: [{ '@type': 'Service', '@id': `${base}/working-genius/#service`, name: 'The 6 Types of Working Genius assessments, team maps, and workshops', serviceType: 'Team development', description: 'Working Genius assessments for individuals and teams, team maps that show where work stalls and which geniuses are missing, and working sessions that turn the results into real changes in roles and handoffs.', provider: org, areaServed: areaServed(site), url: `${base}/working-genius/` }],
     faq: FAQ.wg,
     path: '/working-genius/',
     title: 'The 6 Types of Working Genius | No Alumni',
