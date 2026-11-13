@@ -553,7 +553,7 @@ ${faqSection(FAQ.calc, 'Turnover cost questions')}
     </div>
   </div>
 </section>
-${clients.length ? `<section class="section-tight" aria-labelledby="clients-h"><div class="wrap"><h2 class="eyebrow center" id="clients-h">Organizations we have worked with</h2><ul class="logos">${clients.map((c) => `<li${c.dark ? ' class="dark"' : ''}><img src="${link(c.logo)}" alt="${esc(c.name)}" loading="lazy"></li>`).join('')}</ul></div></section>` : ''}
+${clients.length ? `<section class="section-tight" aria-labelledby="clients-h"><div class="wrap"><h2 class="eyebrow center" id="clients-h">Organizations we have worked with</h2><ul class="logos">${clients.map((c) => `<li${c.tile ? ` class="tile-${c.tile}"` : ''}><img src="${link(c.logo)}" alt="${esc(c.name)}" loading="lazy"></li>`).join('')}</ul></div></section>` : ''}
 <section class="section section-alt">
   <div class="wrap">
     <p class="eyebrow">Highlights</p>

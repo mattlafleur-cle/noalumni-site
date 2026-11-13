@@ -112,13 +112,19 @@ export const reviews = [
 
 // Client logos. Add an entry only with the client's permission and a logo file in src/assets/clients/.
 // The logo section stays hidden while this list is empty.
-// Example: { name: 'Company Name', logo: '/assets/clients/company.svg', url: 'https://company.com' }
+// Example: { name: 'Company Name', logo: '/assets/clients/company.webp' }. Logos made for a dark background
+// get a matching tile color through `tile` (a class defined in site.css).
 export const clients = [
-  { name: 'Jose Medina & Associates', logo: '/assets/clients/jose-medina-associates.webp', dark: true },
+  { name: 'Jose Medina & Associates', logo: '/assets/clients/jose-medina-associates.webp', tile: 'jma' },
   { name: 'Private Physicians Alliance', logo: '/assets/clients/private-physicians-alliance.webp' },
   { name: 'At Your Service Roofing', logo: '/assets/clients/at-your-service-roofing.webp' },
   { name: 'The Roof Detective', logo: '/assets/clients/the-roof-detective.webp' },
   { name: 'Kelly MacLean Achievement Center (KMAC)', logo: '/assets/clients/kmac.webp' },
+  { name: 'Breaking Through Intensive Therapy', logo: '/assets/clients/breaking-through.webp' },
+  { name: 'Rush Enterprises', logo: '/assets/clients/rush-enterprises.webp' },
+  { name: 'Rush Truck Centers', logo: '/assets/clients/rush-truck-centers.webp' },
+  { name: 'FIVE39', logo: '/assets/clients/five39.webp', tile: 'five39' },
+  { name: 'RELAM, Railway Equipment Leasing and Maintenance', logo: '/assets/clients/relam.webp', tile: 'relam' },
 ];
 
 // Post-session survey comments (Google Forms, November 2026). Individuals stay anonymous: no names or emails.
