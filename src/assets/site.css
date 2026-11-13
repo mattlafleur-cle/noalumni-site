@@ -253,3 +253,18 @@ button.btn:disabled { opacity: 0.7; cursor: default; }
 .sq blockquote p { margin: 0; font-size: 1.15rem; font-weight: 700; line-height: 1.4; color: var(--text); }
 .sq figcaption { color: var(--green-text); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; }
 .small-note { font-size: 0.88rem; }
+
+/* Client logo wall: full-color logos on white tiles; dark tile for logos made for dark backgrounds */
+.logos li { background: #fff; }
+.logos li.dark { background: #0f0f0f; }
+.logos img { max-height: 64px; max-width: 100%; filter: none; opacity: 1; }
+h2.eyebrow { font-size: 0.8rem; }
+
+/* Featured participant quotes */
+.featured { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 18px; }
+@media (max-width: 760px) { .featured { grid-template-columns: 1fr; } }
+.fq { margin: 0; padding: 28px 30px; border-radius: 20px; background: var(--panel-2); border: 1px solid var(--line); border-top: 5px solid var(--orange); position: relative; }
+.fq::before { content: "\201C"; position: absolute; top: 6px; right: 22px; font-size: 5rem; line-height: 1; color: rgba(227, 104, 59, 0.25); font-weight: 800; }
+.fq blockquote { margin: 0 0 14px; }
+.fq blockquote p { margin: 0; font-size: 1.3rem; font-weight: 700; line-height: 1.45; color: var(--text); }
+.fq figcaption { color: var(--green-text); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.04em; }

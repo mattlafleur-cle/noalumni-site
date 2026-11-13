@@ -1,7 +1,7 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
 import { esc, faqSection, siteUrl, areaServed } from './layout.mjs';
-import { reviews, trustpilot, clients, surveyStats, surveyQuotes } from './reviews.mjs';
+import { reviews, trustpilot, clients, surveyStats, surveyQuotes, featuredQuotes } from './reviews.mjs';
 
 const typesList = [
   ['W', 'Wonder', 'Pondering the possibility of greater potential and opportunity.'],
@@ -553,7 +553,7 @@ ${faqSection(FAQ.calc, 'Turnover cost questions')}
     </div>
   </div>
 </section>
-${clients.length ? `<section class="section-tight"><div class="wrap"><p class="eyebrow center">Organizations we have worked with</p><ul class="logos">${clients.map((c) => `<li><img src="${link(c.logo)}" alt="${esc(c.name)}" loading="lazy"></li>`).join('')}</ul></div></section>` : ''}
+${clients.length ? `<section class="section-tight" aria-labelledby="clients-h"><div class="wrap"><h2 class="eyebrow center" id="clients-h">Organizations we have worked with</h2><ul class="logos">${clients.map((c) => `<li${c.dark ? ' class="dark"' : ''}><img src="${link(c.logo)}" alt="${esc(c.name)}" loading="lazy"></li>`).join('')}</ul></div></section>` : ''}
 <section class="section section-alt">
   <div class="wrap">
     <p class="eyebrow">Highlights</p>
@@ -565,16 +565,19 @@ ${clients.length ? `<section class="section-tight"><div class="wrap"><p class="e
   <div class="wrap">
     <p class="eyebrow">Straight from the room</p>
     <h2>What participants told us afterward</h2>
-    <p class="lead">Anonymous post-session surveys from a real estate team workshop and a keynote for healthcare practice leaders, ${surveyStats.asOf}.</p>
+    <p class="lead">Anonymous post-session surveys from the Jose Medina &amp; Associates team workshop and the Private Physicians Alliance keynote, ${surveyStats.asOf}.</p>
     <ul class="stats">
       <li><strong>${surveyStats.fives} of ${surveyStats.responses}</strong><span>rated the session 5 out of 5 for usefulness</span></li>
       <li><strong>${surveyStats.average} / 5</strong><span>average usefulness rating</span></li>
       <li><strong>${surveyStats.lengthRight} of ${surveyStats.responses}</strong><span>said the length was about right</span></li>
     </ul>
-    <div class="survey">
-      ${surveyQuotes.map((q) => `<figure class="sq"><blockquote><p>“${esc(q.text)}”</p></blockquote><figcaption>${q.who}</figcaption></figure>`).join('\n      ')}
+    <div class="featured">
+      ${featuredQuotes.map((q) => `<figure class="fq"><blockquote><p>“${esc(q.text)}”</p></blockquote><figcaption>${esc(q.who)}</figcaption></figure>`).join('\n      ')}
     </div>
-    <p class="muted small-note">Quoted word for word from anonymous survey answers. Names and organizations are left out on purpose.</p>
+    <div class="survey">
+      ${surveyQuotes.map((q) => `<figure class="sq"><blockquote><p>“${esc(q.text)}”</p></blockquote><figcaption>${esc(q.who)}</figcaption></figure>`).join('\n      ')}
+    </div>
+    <p class="muted small-note">From anonymous post-session survey answers, spelling lightly corrected. Individual names are left out on purpose.</p>
   </div>
 </section>
 <section class="section section-alt">

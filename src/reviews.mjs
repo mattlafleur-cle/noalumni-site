@@ -113,11 +113,18 @@ export const reviews = [
 // Client logos. Add an entry only with the client's permission and a logo file in src/assets/clients/.
 // The logo section stays hidden while this list is empty.
 // Example: { name: 'Company Name', logo: '/assets/clients/company.svg', url: 'https://company.com' }
-export const clients = [];
+export const clients = [
+  { name: 'Jose Medina & Associates', logo: '/assets/clients/jose-medina-associates.webp', dark: true },
+  { name: 'Private Physicians Alliance', logo: '/assets/clients/private-physicians-alliance.webp' },
+  { name: 'At Your Service Roofing', logo: '/assets/clients/at-your-service-roofing.webp' },
+  { name: 'The Roof Detective', logo: '/assets/clients/the-roof-detective.webp' },
+  { name: 'Kelly MacLean Achievement Center (KMAC)', logo: '/assets/clients/kmac.webp' },
+];
 
-// Post-session survey comments (Google Forms, November 2026), quoted word for word and shown anonymously:
-// no names, emails, or company names. Excerpts only drop text from the start or end of an answer.
-// Source sheets: "JMA Team Session: Quick Feedback (Responses)" (10) and "PPA Session: Quick Feedback (Responses)" (4).
+// Post-session survey comments (Google Forms, November 2026). Individuals stay anonymous: no names or emails.
+// Organizations are named with Matt's OK (he supplied their logos for this page, 2026-11-13).
+// "featured" are the four Matt chose in "Real_participant_quotes.docx" (spelling lightly corrected there).
+// The rest are word for word from the response sheets; excerpts only drop text from the end of an answer.
 export const surveyStats = {
   responses: 14,
   fives: 13,
@@ -126,16 +133,18 @@ export const surveyStats = {
   asOf: 'November 2026',
 };
 
-const jma = 'Participant, real estate team workshop';
-const ppa = 'Keynote attendee, healthcare practice';
-export const surveyQuotes = [
-  { text: 'It was so insightful to see where we had overlap and gaps.', who: ppa },
-  { text: 'I love working genius and have followed it for years. I would love for us to actually get the team working in their geniuses more', who: jma },
+const jma = 'Team member, Jose Medina & Associates';
+const ppa = 'Member, Private Physicians Alliance';
+export const featuredQuotes = [
+  { text: 'It was so insightful to see where we had overlap and gaps. It will help us in our search as we hire for fit and areas where we need different strengths.', who: ppa },
+  { text: 'I love working genius and have followed it for years. I would love for us to actually get the team working in their geniuses more, more deliberate on leadership part.', who: jma },
   { text: 'Think about people’s geniuses when deciding who to include in a specific meeting.', who: jma },
+  { text: 'I want to go out of the “ordinary” and become stronger in my weaker areas', who: jma },
+];
+export const surveyQuotes = [
   { text: 'We would like our whole team to take the assessment.', who: ppa },
   { text: 'I want to learn more about my teams working geniuses and how we can adapt and work better together.', who: jma },
   { text: 'Adjust meetings so the right people are in the room', who: jma },
   { text: 'I know leadership will use it for future planning and focus groups', who: jma },
   { text: 'What I need to delegate based on my profile', who: ppa },
-  { text: 'I want to go out of the “ordinary” and become stronger in my weaker areas', who: jma },
 ];
