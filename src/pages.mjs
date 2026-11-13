@@ -1,7 +1,7 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
 import { esc, faqSection, siteUrl, areaServed } from './layout.mjs';
-import { reviews, trustpilot, clients } from './reviews.mjs';
+import { reviews, trustpilot, clients, surveyStats, surveyQuotes } from './reviews.mjs';
 
 const typesList = [
   ['W', 'Wonder', 'Pondering the possibility of greater potential and opportunity.'],
@@ -95,9 +95,9 @@ const FAQ = {
     ['Does No Alumni work with schools?', 'Yes. Contact us to bring our message to your school or career-tech program, or to talk about training and workforce development for students.'],
   ],
   work: [
-    ['What do clients say about No Alumni?', `No Alumni has a ${trustpilot.score} out of 5 rating on Trustpilot from ${trustpilot.count} reviews (as of ${trustpilot.asOf}). Reviewers most often mention clearer teamwork and communication, a better understanding of what energizes and drains each person, and Greg Snyder's practical, easygoing facilitation.`],
+    ['What do clients say about No Alumni?', `No Alumni has a ${trustpilot.score} out of 5 rating on Trustpilot from ${trustpilot.count} reviews (as of ${trustpilot.asOf}), and in anonymous post-session surveys ${surveyStats.fives} of ${surveyStats.responses} participants rated their session 5 out of 5 for usefulness. Reviewers most often mention clearer teamwork and communication, a better understanding of what energizes and drains each person, and Greg Snyder's practical, easygoing facilitation.`],
     ['What kinds of organizations has No Alumni worked with?', 'Reviewers include a small construction company that has worked with No Alumni for over a year, a physical therapy practice that used Working Genius to hire, office teams, community organizations, and families.'],
-    ['Where can I read independent reviews of No Alumni?', 'All reviews on this page come from No Alumni’s public Trustpilot profile at trustpilot.com/review/noalumni.com, where you can read every review in full.'],
+    ['Where do the reviews and comments on this page come from?', 'The client reviews come from No Alumni’s public Trustpilot profile at trustpilot.com/review/noalumni.com, where you can read every review in full. The participant comments come from anonymous surveys sent after sessions, quoted word for word.'],
   ],
   calc: [
     ['How much does employee turnover cost?', 'Published benchmarks put the cost of replacing an employee at roughly 50% to 200% of their annual salary, depending on the role level (SHRM and Gallup), and as high as 213% for executives (Center for American Progress). Those figures cover replacement cost only, so the real cost is usually higher.'],
@@ -225,7 +225,7 @@ export function pages(site, link) {
   <div class="wrap">
     <p class="eyebrow">What clients say</p>
     <h2>Real teams. Real results.</h2>
-    <p class="lead">${trustpilot.score} out of 5 on Trustpilot from ${trustpilot.count} reviews.</p>
+    <p class="lead">${trustpilot.score} out of 5 on Trustpilot from ${trustpilot.count} reviews, and ${surveyStats.fives} of ${surveyStats.responses} recent session participants rated us 5 out of 5.</p>
     ${quoteStrip([reviews[0], reviews[1], reviews[4]])}
     <a class="btn btn-outline" href="${link('/our-work/')}">See our work</a>
   </div>
@@ -562,6 +562,22 @@ ${clients.length ? `<section class="section-tight"><div class="wrap"><p class="e
   </div>
 </section>
 <section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Straight from the room</p>
+    <h2>What participants told us afterward</h2>
+    <p class="lead">Anonymous post-session surveys from a real estate team workshop and a keynote for healthcare practice leaders, ${surveyStats.asOf}.</p>
+    <ul class="stats">
+      <li><strong>${surveyStats.fives} of ${surveyStats.responses}</strong><span>rated the session 5 out of 5 for usefulness</span></li>
+      <li><strong>${surveyStats.average} / 5</strong><span>average usefulness rating</span></li>
+      <li><strong>${surveyStats.lengthRight} of ${surveyStats.responses}</strong><span>said the length was about right</span></li>
+    </ul>
+    <div class="survey">
+      ${surveyQuotes.map((q) => `<figure class="sq"><blockquote><p>“${esc(q.text)}”</p></blockquote><figcaption>${q.who}</figcaption></figure>`).join('\n      ')}
+    </div>
+    <p class="muted small-note">Quoted word for word from anonymous survey answers. Names and organizations are left out on purpose.</p>
+  </div>
+</section>
+<section class="section section-alt">
   <div class="wrap">
     <p class="eyebrow">In their words</p>
     <h2>Client reviews</h2>
