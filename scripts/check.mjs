@@ -35,6 +35,8 @@ const banned = [
   [/–/, 'en dash'],
   [/\bTODO\b|\bTBD\b|lorem ipsum/i, 'placeholder text'],
   [/\$\{/, 'an unfilled template variable'],
+  // People no longer affiliated with No Alumni (Matt, 2026-11-13). Their names must not appear anywhere.
+  [/randi|borosh/i, 'a former team member (Randi Borosh)'],
   [/undefined|\bnull\b|\[object Object\]/, 'a template value that did not resolve'],
 ];
 
