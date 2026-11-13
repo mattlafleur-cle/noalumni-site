@@ -47,11 +47,12 @@ const offers = [
   },
 ];
 
-// Team as listed on the Wix "Who We Are" page. Dave's email link pointed to matt@ on Wix; fixed here.
+// Team, in the order Matt set on 2026-11-13. Dave's email link pointed to matt@ on Wix; fixed here.
 const team = [
   { name: 'Greg Snyder', email: 'greg@noalumni.com' },
-  { name: 'Dave Hall', email: 'dave@noalumni.com' },
   { name: 'Matt LaFleur', email: 'matt@noalumni.com' },
+  { name: 'Dave Hall', email: 'dave@noalumni.com' },
+  { name: 'Josh Muller', email: 'josh@noalumni.com' },
   { name: 'Nolan Snyder', email: 'nolan@noalumni.com' },
 ];
 const initials = (n) => n.split(' ').map((p) => p[0]).join('');
