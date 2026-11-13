@@ -125,6 +125,7 @@ export const clients = [
   { name: 'Rush Truck Centers', logo: '/assets/clients/rush-truck-centers.webp' },
   { name: 'FIVE39', logo: '/assets/clients/five39.webp', tile: 'five39' },
   { name: 'RELAM, Railway Equipment Leasing and Maintenance', logo: '/assets/clients/relam.webp', tile: 'relam' },
+  { name: 'Lifestyle Landscaping', logo: '/assets/clients/lifestyle-landscaping.webp' },
 ];
 
 // Post-session survey comments (Google Forms, November 2026). Individuals stay anonymous: no names or emails.
