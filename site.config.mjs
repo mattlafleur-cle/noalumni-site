@@ -26,6 +26,14 @@ export default {
     phone: '216-550-4689',
   },
 
+  // Form destinations (Formspree). The calculator endpoint is the one the Wix calculator already used.
+  // The contact form reuses it for now (submissions are labeled "Website contact form"); a separate
+  // Formspree form can replace it later without other changes.
+  forms: {
+    calculator: 'https://formspree.io/f/xzepjdvq',
+    contact: 'https://formspree.io/f/xzepjdvq',
+  },
+
   shopUrl: 'https://noalumni.shop/',
   eventsUrl: 'https://www.eventbrite.com/o/no-alumni-121363530237',
   workingGeniusAssessmentUrl: 'https://myformflow.io/no-alumni/workinggenius',

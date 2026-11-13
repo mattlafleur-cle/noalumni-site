@@ -173,3 +173,26 @@ p { margin: 0 0 1em; }
 .footer-pod { color: var(--muted); font-size: 0.92rem; }
 .footer-base { border-top: 1px solid var(--line); margin-top: 36px; padding-top: 18px; color: var(--muted); font-size: 0.85rem; }
 .footer-base p { margin: 0; }
+
+/* Additions for page content */
+.card-h { font-size: 1.45rem; color: var(--orange); }
+a.card-plain { text-decoration: none; color: var(--text); display: block; transition: border-color 0.15s, transform 0.15s; }
+a.card-plain:hover { border-color: var(--orange); transform: translateY(-2px); color: var(--text); }
+@media (prefers-reduced-motion: reduce) { a.card-plain:hover { transform: none; } }
+.grid-gap { margin-top: 20px; }
+.checks, .arrows { list-style: none; padding: 0; margin: 0 0 1em; }
+.checks li, .arrows li { position: relative; padding-left: 30px; margin-bottom: 10px; }
+.checks li::before { content: ""; position: absolute; left: 0; top: 0.35em; width: 18px; height: 18px; border-radius: 50%; background: var(--green); }
+.checks li::after { content: ""; position: absolute; left: 6px; top: 0.55em; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.arrows li::before { content: "\2192"; position: absolute; left: 0; color: var(--orange); font-weight: 800; }
+.field textarea { font: inherit; color: var(--text); background: var(--bg); border: 2px solid var(--line); border-radius: 12px; padding: 12px 14px; resize: vertical; }
+.field textarea:focus { border-color: var(--orange); outline: none; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-status { margin: 12px 0 0; font-weight: 700; color: var(--cream); }
+.k { display: block; color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800; margin-bottom: 6px; }
+.price { font-size: 1.2rem; font-weight: 800; color: var(--text); }
+.hint.warn { color: var(--orange-hi); }
+#calc > div { display: grid; gap: 16px; align-content: start; }
+#calc .result { margin-top: 0; }
+button.btn { cursor: pointer; }
+button.btn:disabled { opacity: 0.7; cursor: default; }
