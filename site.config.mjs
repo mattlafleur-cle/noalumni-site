@@ -7,14 +7,14 @@ export default {
   // Preview (now): GitHub's project address, https://mattlafleur-cle.github.io/noalumni-site/, so every link
   // carries the /noalumni-site prefix. At switch-over to www.noalumni.com, set basePath to '' and
   // canonicalDomain to 'https://www.noalumni.com', and add the custom domain in Settings > Pages.
-  basePath: '/noalumni-site',
-  canonicalDomain: null,
+  basePath: '',
+  canonicalDomain: 'https://www.noalumni.com',
   // Absolute origin used for share images and structured data while there is no canonical domain yet.
   previewOrigin: 'https://mattlafleur-cle.github.io',
 
   // Search indexing stays OFF during the preview so it never competes with the live Wix site.
   // Every page carries noindex until this is true (which requires canonicalDomain).
-  allowIndexing: false,
+  allowIndexing: true, // Turned on 2026-11-13 at launch (Matt).
 
   // IndexNow key: public by design. The build publishes it as /<key>.txt so search engines (Bing and others,
   // which also feed ChatGPT search and Copilot) can confirm change notifications come from this site.
