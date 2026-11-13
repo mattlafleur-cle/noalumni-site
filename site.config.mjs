@@ -16,6 +16,10 @@ export default {
   // Every page carries noindex until this is true (which requires canonicalDomain).
   allowIndexing: false,
 
+  // IndexNow key: public by design. The build publishes it as /<key>.txt so search engines (Bing and others,
+  // which also feed ChatGPT search and Copilot) can confirm change notifications come from this site.
+  indexNowKey: '95e42adafb792e1a40c282af42025672',
+
   founded: '2023',
   // How the organization describes itself to search and answer engines (structured data, llms.txt).
   summary: 'No Alumni is a national community, movement, and network based in Northeast Ohio, established in 2023, that celebrates every path to success, including the skilled trades and other careers that do not require a college degree. No Alumni also helps businesses, schools, and organizations with AI consulting, training and upskilling, The 6 Types of Working Genius, and workplace culture consulting, for clients and companies across the United States and around the world.',
