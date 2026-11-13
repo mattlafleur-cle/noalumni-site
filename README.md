@@ -8,7 +8,8 @@ Static site for noalumni.com, replacing the Wix site. Plain Node, no dependencie
 
 Content lives in `src/pages.mjs`; shared facts, form endpoints, and short links in `site.config.mjs`.
 
-## Switch-over to www.noalumni.com (later)
+## Switch-over to www.noalumni.com
+The full click-by-click plan is in SWITCHOVER.md. Summary:
 1. In `site.config.mjs`: `basePath: ''`, `canonicalDomain: 'https://www.noalumni.com'`, and `allowIndexing: true` once approved.
 2. Settings > Pages > Custom domain: `www.noalumni.com`, then enforce HTTPS.
 3. In Wix (domain stays registered there): disconnect the domain from the Wix site, then point the records at GitHub Pages.
