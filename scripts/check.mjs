@@ -116,7 +116,7 @@ for (const f of html) {
   }
 }
 for (const [t, where] of titles) if (where.length > 1) errors.push(`duplicate title "${t}" on ${where.join(', ')}`);
-for (const p of ['index.html', '404.html', 'what-we-offer/index.html', 'working-genius/index.html', 'who-we-are/index.html', 'contact-us/index.html', 'shop/index.html', 'drag-calculator/index.html', 'jma/index.html', 'ppa/index.html', 'commodore/index.html'])
+for (const p of ['index.html', '404.html', 'our-work/index.html', 'what-we-offer/index.html', 'working-genius/index.html', 'who-we-are/index.html', 'contact-us/index.html', 'shop/index.html', 'drag-calculator/index.html', 'jma/index.html', 'ppa/index.html', 'commodore/index.html'])
   if (!(await exists(path.join(dist, p)))) errors.push(`required page missing: ${p} (it exists on the current site)`);
 
 // Files search engines and AI assistants look for.

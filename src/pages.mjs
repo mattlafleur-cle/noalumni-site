@@ -1,6 +1,7 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
 import { esc, faqSection, siteUrl, areaServed } from './layout.mjs';
+import { reviews, trustpilot, clients } from './reviews.mjs';
 
 const typesList = [
   ['W', 'Wonder', 'Pondering the possibility of greater potential and opportunity.'],
@@ -93,6 +94,11 @@ const FAQ = {
     ['Can I book a No Alumni speaker?', 'Yes. Contact us to book a speaker for your event, school, or organization.'],
     ['Does No Alumni work with schools?', 'Yes. Contact us to bring our message to your school or career-tech program, or to talk about training and workforce development for students.'],
   ],
+  work: [
+    ['What do clients say about No Alumni?', `No Alumni has a ${trustpilot.score} out of 5 rating on Trustpilot from ${trustpilot.count} reviews (as of ${trustpilot.asOf}). Reviewers most often mention clearer teamwork and communication, a better understanding of what energizes and drains each person, and Greg Snyder's practical, easygoing facilitation.`],
+    ['What kinds of organizations has No Alumni worked with?', 'Reviewers include a small construction company that has worked with No Alumni for over a year, a physical therapy practice that used Working Genius to hire, office teams, community organizations, and families.'],
+    ['Where can I read independent reviews of No Alumni?', 'All reviews on this page come from No Alumni’s public Trustpilot profile at trustpilot.com/review/noalumni.com, where you can read every review in full.'],
+  ],
   calc: [
     ['How much does employee turnover cost?', 'Published benchmarks put the cost of replacing an employee at roughly 50% to 200% of their annual salary, depending on the role level (SHRM and Gallup), and as high as 213% for executives (Center for American Progress). Those figures cover replacement cost only, so the real cost is usually higher.'],
     ['How does the Turnover Drag Calculator estimate the cost?', 'It multiplies the number of people who left in the past 12 months by their average annual pay, then applies a replacement-cost range for the typical role level: 50% to 75% for entry-level or hourly roles, 30% to 50% for teachers and instructional staff, 100% to 150% for mid-level, skilled trade, or technical roles, 150% to 200% for management or specialized roles, and 200% to 213% for executives.'],
@@ -101,6 +107,10 @@ const FAQ = {
     ['Is the Turnover Drag Calculator free?', 'Yes. The calculator is free. Enter four things about your team to see the estimated range, then share your email if you want the next step we would recommend.'],
   ],
 };
+
+const stars = '<span class="stars" aria-hidden="true">★★★★★</span>';
+const reviewCard = (r) => `<figure class="review"><figcaption><span class="tag">${r.topic}</span>${stars}</figcaption><blockquote><p class="review-title">${esc(r.title)}</p><p>${esc(r.text)}</p></blockquote><p class="review-src">${r.date} · <a href="${r.url}" rel="noopener">Read on Trustpilot</a></p></figure>`;
+const quoteStrip = (list) => `<div class="grid grid-3">${list.map((r) => `<figure class="pull"><blockquote><p>“${esc(r.pull)}”</p></blockquote><figcaption>${r.topic} · <a href="${r.url}" rel="noopener">Trustpilot review, ${r.date}</a></figcaption></figure>`).join('')}</div>`;
 
 const initials = (n) => n.split(' ').map((p) => p[0]).join('');
 
@@ -209,6 +219,15 @@ export function pages(site, link) {
         <a class="btn btn-outline btn-small" href="${site.socials.find((s) => s.name === 'YouTube').url}" rel="noopener">YouTube</a>
       </div>
     </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="wrap">
+    <p class="eyebrow">What clients say</p>
+    <h2>Real teams. Real results.</h2>
+    <p class="lead">${trustpilot.score} out of 5 on Trustpilot from ${trustpilot.count} reviews.</p>
+    ${quoteStrip([reviews[0], reviews[1], reviews[4]])}
+    <a class="btn btn-outline" href="${link('/our-work/')}">See our work</a>
   </div>
 </section>
 ${faqSection(FAQ.home)}
@@ -514,6 +533,49 @@ ${faqSection(FAQ.calc, 'Turnover cost questions')}
 `,
   };
 
+  const ourWork = {
+    key: 'our-work',
+    crumb: 'Our Work',
+    faq: FAQ.work,
+    path: '/our-work/',
+    title: 'Our Work and Client Reviews | No Alumni',
+    description: `What teams say after working with No Alumni: ${trustpilot.score} out of 5 on Trustpilot. Working Genius workshops, hiring, team culture, and employee development.`,
+    pageType: 'CollectionPage',
+    body: `
+<section class="hero">
+  <div class="wrap narrow">
+    <p class="eyebrow">Our work</p>
+    <h1>Real teams. Real results.</h1>
+    <p class="lead">From construction crews to physical therapy practices, office teams to families: here is what people say after working with No Alumni, in their own words.</p>
+    <div class="proof">
+      <span class="proof-score">${trustpilot.score}</span>
+      <span class="proof-text">out of 5 on Trustpilot from ${trustpilot.count} reviews<br><a href="${trustpilot.url}" rel="noopener">Read every review on Trustpilot</a></span>
+    </div>
+  </div>
+</section>
+${clients.length ? `<section class="section-tight"><div class="wrap"><p class="eyebrow center">Organizations we have worked with</p><ul class="logos">${clients.map((c) => `<li><img src="${link(c.logo)}" alt="${esc(c.name)}" loading="lazy"></li>`).join('')}</ul></div></section>` : ''}
+<section class="section section-alt">
+  <div class="wrap">
+    <p class="eyebrow">Highlights</p>
+    <h2>What changes when a team works with us</h2>
+    ${quoteStrip([reviews[2], reviews[3], reviews[7]])}
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">In their words</p>
+    <h2>Client reviews</h2>
+    <p class="muted">Quoted word for word from No Alumni’s public Trustpilot profile. Each review links to the original.</p>
+    <div class="reviews">
+      ${reviews.map(reviewCard).join('\n      ')}
+    </div>
+  </div>
+</section>
+${faqSection(FAQ.work, 'About our reviews')}
+${ctaBand(site, link, 'Want results like these?', 'Start with a short conversation about your team. You will leave with a practical next step, whether or not we ever work together.')}
+`,
+  };
+
   const notFound = {
     key: '404',
     path: '/404',
@@ -535,5 +597,5 @@ ${faqSection(FAQ.calc, 'Turnover cost questions')}
 `,
   };
 
-  return [home, whatWeOffer, workingGenius, whoWeAre, contact, shop, calculator, notFound];
+  return [home, whatWeOffer, workingGenius, ourWork, whoWeAre, contact, shop, calculator, notFound];
 }

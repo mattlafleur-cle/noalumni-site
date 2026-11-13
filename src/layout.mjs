@@ -8,6 +8,7 @@ export const createLinker = (site) => (p) => (/^(https?:|mailto:|tel:|#)/.test(p
 const nav = [
   { key: 'what-we-offer', label: 'What We Offer', path: '/what-we-offer/' },
   { key: 'working-genius', label: 'Working Genius', path: '/working-genius/' },
+  { key: 'our-work', label: 'Our Work', path: '/our-work/' },
   { key: 'who-we-are', label: 'Who We Are', path: '/who-we-are/' },
   { key: 'events', label: 'Events', external: 'eventsUrl' },
   { key: 'shop', label: 'Shop', path: '/shop/' },
@@ -198,6 +199,7 @@ ${body}
       <ul class="plain">
         <li><a href="${link('/what-we-offer/')}">What we offer</a></li>
         <li><a href="${link('/working-genius/')}">The 6 Types of Working Genius</a></li>
+        <li><a href="${link('/our-work/')}">Our work and client reviews</a></li>
         <li><a href="${link('/drag-calculator/')}">Turnover Drag Calculator</a></li>
         <li><a href="${site.shopUrl}" rel="noopener">Shop No Alumni gear</a></li>
         <li><a href="${site.trustpilotUrl}" rel="noopener">Review us on Trustpilot</a></li>
