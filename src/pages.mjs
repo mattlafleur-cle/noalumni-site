@@ -49,11 +49,11 @@ const offers = [
 
 // Team, in the order Matt set on 2026-11-13. Dave's email link pointed to matt@ on Wix; fixed here.
 const team = [
-  { name: 'Greg Snyder', email: 'greg@noalumni.com' },
-  { name: 'Matt LaFleur', email: 'matt@noalumni.com' },
-  { name: 'Dave Hall', email: 'dave@noalumni.com' },
-  { name: 'Josh Muller', email: 'josh@noalumni.com' },
-  { name: 'Nolan Snyder', email: 'nolan@noalumni.com' },
+  { name: 'Greg Snyder', email: 'greg@noalumni.com', photo: '/assets/team/greg.webp' },
+  { name: 'Matt LaFleur', email: 'matt@noalumni.com', photo: '/assets/team/matt.webp' },
+  { name: 'Dave Hall', email: 'dave@noalumni.com', photo: '/assets/team/dave.webp' },
+  { name: 'Josh Muller', email: 'josh@noalumni.com', photo: '/assets/team/josh.webp' },
+  { name: 'Nolan Snyder', email: 'nolan@noalumni.com', photo: '/assets/team/nolan.webp' },
 ];
 const initials = (n) => n.split(' ').map((p) => p[0]).join('');
 
@@ -275,7 +275,7 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
     <h2>Your neighbors, and we need you to join us.</h2>
     <p class="lead">An expert, eclectic, and specialized team of leaders, innovators, and practitioners who bring diverse strengths together to inspire tomorrow’s workforce and redefine what’s possible.</p>
     <div class="people">
-      ${team.map((p) => `<div class="person"><div class="avatar" aria-hidden="true">${initials(p.name)}</div><h3>${esc(p.name)}</h3><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
+      ${team.map((p) => `<div class="person">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
     </div>
   </div>
 </section>
