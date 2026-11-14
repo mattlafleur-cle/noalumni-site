@@ -1,6 +1,7 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
 import { esc, faqSection, siteUrl, areaServed } from './layout.mjs';
+import { growthPages, TYPES, INDUSTRIES } from './growth.mjs';
 import { reviews, trustpilot, clients, surveyStats, surveyQuotes, featuredQuotes } from './reviews.mjs';
 
 const typesList = [
@@ -291,8 +292,13 @@ ${ctaBand(site, link, 'Not sure where to start?', 'Tell us about your team in a 
     <h2>What is Working Genius?</h2>
     <p class="lead">A proven framework that helps individuals and teams identify their natural talents across six types of work, helping build stronger, more engaged workplaces. Each person has two areas of genius that give them energy, and two areas of frustration that drain it.</p>
     <ul class="types">
-      ${typesList.map(([l, n, d]) => `<li><b><span class="letter" aria-hidden="true">${l}</span>${n}</b><span class="def">${d}</span></li>`).join('\n      ')}
+      ${TYPES.map((t) => `<li><a class="type-link" href="${link(`/working-genius/${t.slug}/`)}"><b><span class="letter" aria-hidden="true">${t.letter}</span>${t.name}</b><span class="def">${t.short}</span></a></li>`).join('\n      ')}
     </ul>
+    <div class="btn-row grid-gap">
+      <a class="btn btn-fill" href="${link('/team-map/')}">Build your free team map</a>
+      <a class="btn btn-outline" href="${link('/speaking/')}">Bring Working Genius to your group</a>
+    </div>
+    <p class="muted grid-gap">Working Genius for ${INDUSTRIES.map((i) => `<a href="${link(`/working-genius/${i.slug}/`)}">${i.crumb.toLowerCase()}</a>`).join(', ')}.</p>
   </div>
 </section>
 <section class="section">
@@ -616,5 +622,5 @@ ${ctaBand(site, link, 'Want results like these?', 'Start with a short conversati
 `,
   };
 
-  return [home, whatWeOffer, workingGenius, ourWork, whoWeAre, contact, shop, calculator, notFound];
+  return [home, whatWeOffer, workingGenius, ourWork, whoWeAre, contact, shop, calculator, ...growthPages(site, link), notFound];
 }

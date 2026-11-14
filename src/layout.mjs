@@ -10,7 +10,7 @@ const nav = [
   { key: 'working-genius', label: 'Working Genius', path: '/working-genius/' },
   { key: 'our-work', label: 'Our Work', path: '/our-work/' },
   { key: 'who-we-are', label: 'Who We Are', path: '/who-we-are/' },
-  { key: 'events', label: 'Events', external: 'eventsUrl' },
+  { key: 'speaking', label: 'Speaking', path: '/speaking/' },
   { key: 'shop', label: 'Shop', path: '/shop/' },
   { key: 'contact-us', label: 'Contact', path: '/contact-us/' },
 ];
@@ -97,7 +97,9 @@ export function pageShell({ site, link, page, body, graph = [] }) {
   const canonical = site.canonicalDomain ? `${site.canonicalDomain}${page.path}` : null;
   const url = abs(site, page.path === '/404' ? '/' : page.path);
   const shareImage = abs(site, `/assets/${page.ogImage || 'og-image.jpg'}`);
-  const crumbs = [{ name: 'Home', path: '/' }].concat(page.path === '/' || page.path === '/404' ? [] : [{ name: page.crumb || page.title.split(' | ')[0], path: page.path }]);
+  const crumbs = [{ name: 'Home', path: '/' }]
+    .concat(page.path.startsWith('/working-genius/') && page.path !== '/working-genius/' ? [{ name: 'Working Genius', path: '/working-genius/' }] : [])
+    .concat(page.path === '/' || page.path === '/404' ? [] : [{ name: page.crumb || page.title.split(' | ')[0], path: page.path }]);
   const ld = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -160,6 +162,7 @@ ${indexing ? '<meta name="robots" content="index, follow, max-image-preview:larg
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
 <link rel="stylesheet" href="${link('/assets/site.css')}">
 <script src="${link('/assets/site.js')}" defer></script>
+${site.analytics?.cloudflareToken ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${site.analytics.cloudflareToken}"}'></script>` : ''}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -201,6 +204,9 @@ ${body}
         <li><a href="${link('/working-genius/')}">The 6 Types of Working Genius</a></li>
         <li><a href="${link('/our-work/')}">Our work and client reviews</a></li>
         <li><a href="${link('/drag-calculator/')}">Turnover Drag Calculator</a></li>
+        <li><a href="${link('/team-map/')}">Free team map builder</a></li>
+        <li><a href="${link('/speaking/')}">Keynotes and workshops</a></li>
+        <li><a href="${site.eventsUrl}" rel="noopener">Public events</a></li>
         <li><a href="${site.shopUrl}" rel="noopener">Shop No Alumni gear</a></li>
         <li><a href="${site.trustpilotUrl}" rel="noopener">Review us on Trustpilot</a></li>
       </ul>

@@ -47,6 +47,10 @@ export default {
     contact: 'https://formspree.io/f/xzepjdvq',
   },
 
+  // Site analytics: Cloudflare Web Analytics (free, no cookies, no personal data). Paste the site token from
+  // dash.cloudflare.com > Analytics & Logs > Web Analytics to turn it on. Empty means no analytics script at all.
+  analytics: { cloudflareToken: '' },
+
   shopUrl: 'https://noalumni.shop/',
   eventsUrl: 'https://www.eventbrite.com/o/no-alumni-121363530237',
   workingGeniusAssessmentUrl: 'https://myformflow.io/no-alumni/workinggenius',
