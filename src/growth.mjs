@@ -2,7 +2,7 @@
 // industry pages, and the free team map builder. Copy is original; nothing is copied from
 // The Table Group's materials. Claims about clients come only from reviews, surveys, and logos
 // No Alumni has permission to show (see src/reviews.mjs).
-import { esc, faqSection, ver } from './layout.mjs';
+import { esc, faqSection, ver, noSlot } from './layout.mjs';
 import { reviews, trustpilot, clients, surveyStats, featuredQuotes } from './reviews.mjs';
 
 const logoWall = (link, names) => {
@@ -377,6 +377,7 @@ const speakingPage = (site, link) => ({
       <p class="eyebrow">Plan your event</p>
       <h2>Tell us about your group.</h2>
       <p class="lead">Share a few details and we will follow up with ideas and a clear proposal. Prefer to talk? <a href="${site.booking.call}" rel="noopener">Schedule a quick call</a>.</p>
+      ${noSlot(site)}
       <p>Our facilitators: <a href="${link('/who-we-are/#greg-snyder')}">Greg Snyder</a>, <a href="${link('/who-we-are/#matt-lafleur')}">Matt LaFleur</a>, and <a href="${link('/who-we-are/#josh-muller')}">Josh Muller</a>.</p>
     </div>
     <form class="calc ajax-form" action="${site.forms.contact}" method="POST">
@@ -621,6 +622,7 @@ export const podcastPage = (site, link, team) => {
         <a class="btn btn-fill" href="${site.booking.call}" rel="noopener">Book a New Game Readiness Assessment</a>
         <a class="btn btn-outline" href="${link('/speaking/')}">Bring Matt and Greg to your event</a>
       </div>
+      ${noSlot(site)}
     </div>
   </div>
 </section>
@@ -755,6 +757,7 @@ ${faqSection(MAPLE_FAQ, 'Questions about the partnership')}
         <a class="btn btn-fill" href="${site.booking.call}" rel="noopener">Schedule a call with No Alumni</a>
         <a class="btn btn-outline" href="${MCA.booking}" rel="noopener">Schedule with Maple Creek Advisors</a>
       </div>
+      ${noSlot(site)}
     </div>
   </div>
 </section>

@@ -501,3 +501,6 @@ select { font: inherit; }
   .band .btn-row { flex-direction: column; align-items: stretch; max-width: 320px; margin-left: auto; margin-right: auto; }
   .band .btn-row .btn { text-align: center; justify-content: center; }
 }
+.no-slot { margin: 14px 0 20px; font-size: 0.92rem; color: var(--muted); }
+.no-slot a { color: var(--text); white-space: nowrap; }
+.band .no-slot { margin-bottom: 0; margin-left: auto; margin-right: auto; max-width: 34em; }

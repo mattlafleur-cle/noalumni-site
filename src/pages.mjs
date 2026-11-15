@@ -1,6 +1,6 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
-import { esc, faqSection, siteUrl, areaServed, ver } from './layout.mjs';
+import { esc, faqSection, siteUrl, areaServed, ver, noSlot } from './layout.mjs';
 import { growthPages, TYPES, INDUSTRIES, podcastPage, mapleCreekPage } from './growth.mjs';
 import { reviews, trustpilot, clients, surveyStats, surveyQuotes, featuredQuotes } from './reviews.mjs';
 
@@ -125,6 +125,7 @@ const ctaBand = (site, link, heading = 'Ready to start a conversation?', text = 
         <a class="btn btn-fill" href="${site.booking.call}" rel="noopener">Schedule a quick call</a>
         <a class="btn btn-outline" href="${link('/contact-us/')}">Contact us</a>
       </div>
+      ${noSlot(site)}
     </div>
   </div>
 </section>`;
@@ -444,6 +445,7 @@ ${faqSection(FAQ.who, 'About No Alumni')}
       <li><span class="k">Phone</span><a href="tel:+1${site.contact.phone.replace(/\D/g, '')}">${site.contact.phone}</a></li>
       <li><span class="k">Talk with us</span><a href="${site.booking.call}" rel="noopener">Schedule a quick call</a></li>
     </ul>
+    ${noSlot(site)}
   </div>
 </section>
 ${faqSection(FAQ.contact)}

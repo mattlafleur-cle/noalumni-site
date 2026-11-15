@@ -10,6 +10,9 @@ export const ver = (file) => {
 };
 
 // Internal link helper: adds the base path (the preview lives under /noalumni-site/) to site-relative paths.
+// Fallback for visitors who cannot find a booking slot (Matt, 2026-11-15).
+export const noSlot = (site) => `<p class="no-slot">No time that works? Email <a href="mailto:${site.contact.email}?subject=Finding%20a%20time%20to%20talk">${site.contact.email}</a> or call <a href="tel:+1${site.contact.phone.replace(/\D/g, '')}">${site.contact.phone}</a> and we will find one.</p>`;
+
 export const createLinker = (site) => (p) => (/^(https?:|mailto:|tel:|#)/.test(p) ? p : `${site.basePath}${p}`);
 
 const nav = [
