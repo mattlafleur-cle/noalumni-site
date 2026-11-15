@@ -2,7 +2,7 @@
 // industry pages, and the free team map builder. Copy is original; nothing is copied from
 // The Table Group's materials. Claims about clients come only from reviews, surveys, and logos
 // No Alumni has permission to show (see src/reviews.mjs).
-import { esc, faqSection } from './layout.mjs';
+import { esc, faqSection, ver } from './layout.mjs';
 import { reviews, trustpilot, clients, surveyStats, featuredQuotes } from './reviews.mjs';
 
 const logoWall = (link, names) => {
@@ -478,7 +478,7 @@ const teamMapPage = (site, link) => ({
 <div class="no-print">
 ${faqSection(TEAM_MAP_FAQ, 'Team map questions')}
 </div>
-<script src="${link('/assets/team-map.js')}" defer></script>
+<script src="${link('/assets/team-map.js')}?v=${ver('team-map.js')}" defer></script>
 `,
 });
 
@@ -576,7 +576,7 @@ export const podcastPage = (site, link, team) => {
     <table class="bands og-ng">
       <caption>What each game values</caption>
       <thead><tr><th scope="col">The Old Game valued</th><th scope="col">The New Game values</th></tr></thead>
-      <tbody>${OLD_NEW.map(([o, n]) => `<tr><td>${o}</td><td>${n}</td></tr>`).join('')}</tbody>
+      <tbody>${OLD_NEW.map(([o, n]) => `<tr><td data-label="If you want">${o}</td><td data-label="Start with">${n}</td></tr>`).join('')}</tbody>
     </table>
     <p>You do not have to quit your job or your life to play the New Game. You reorient, build real skills, and stop outsourcing your identity to institutions or titles. <strong>From pedigree to potential.</strong></p>
   </div>
@@ -670,7 +670,7 @@ export const mapleCreekPage = (site, link, team) => {
     <div class="collab-logos" aria-label="No Alumni and Maple Creek Advisors">
       <img src="${link('/assets/brand/badge.webp')}" width="240" height="240" alt="No Alumni badge, established 2023">
       <span class="collab-plus" aria-hidden="true">+</span>
-      <span class="collab-mca"><img src="${link('/assets/partners/maple-creek-advisors.webp')}" width="512" height="550" alt="Maple Creek Advisors logo"></span>
+      <img src="${link('/assets/partners/maple-creek-advisors.webp')}" width="600" height="600" alt="Maple Creek Advisors logo">
     </div>
   </div>
 </section>
@@ -734,12 +734,12 @@ export const mapleCreekPage = (site, link, team) => {
       <table class="collab-table">
         <thead><tr><th scope="col">If you want</th><th scope="col">Start with</th></tr></thead>
         <tbody>
-          <tr><td>A keynote, workshop, or team session</td><td><a href="${link('/speaking/')}">No Alumni</a></td></tr>
-          <tr><td>A school, career, or workforce program</td><td><a href="${link('/what-we-offer/')}">No Alumni</a></td></tr>
-          <tr><td>Ongoing business coaching for an owner or leadership team</td><td><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
-          <tr><td>Fractional CFO support or clearer financial reporting</td><td><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
-          <tr><td>Help preparing to sell a business</td><td><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
-          <tr><td>Not sure yet</td><td>Either one. You will reach the same people.</td></tr>
+          <tr><td data-label="If you want">A keynote, workshop, or team session</td><td data-label="Start with"><a href="${link('/speaking/')}">No Alumni</a></td></tr>
+          <tr><td data-label="If you want">A school, career, or workforce program</td><td data-label="Start with"><a href="${link('/what-we-offer/')}">No Alumni</a></td></tr>
+          <tr><td data-label="If you want">Ongoing business coaching for an owner or leadership team</td><td data-label="Start with"><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
+          <tr><td data-label="If you want">Fractional CFO support or clearer financial reporting</td><td data-label="Start with"><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
+          <tr><td data-label="If you want">Help preparing to sell a business</td><td data-label="Start with"><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
+          <tr><td data-label="If you want">Not sure yet</td><td data-label="Start with">Either one. You will reach the same people.</td></tr>
         </tbody>
       </table>
     </div>

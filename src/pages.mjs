@@ -1,6 +1,6 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
-import { esc, faqSection, siteUrl, areaServed } from './layout.mjs';
+import { esc, faqSection, siteUrl, areaServed, ver } from './layout.mjs';
 import { growthPages, TYPES, INDUSTRIES, podcastPage, mapleCreekPage } from './growth.mjs';
 import { reviews, trustpilot, clients, surveyStats, surveyQuotes, featuredQuotes } from './reviews.mjs';
 
@@ -594,7 +594,7 @@ ${faqSection(FAQ.contact)}
   </div>
 </section>
 ${faqSection(FAQ.calc, 'Turnover cost questions')}
-<script src="${link('/assets/calculator.js')}" defer></script>
+<script src="${link('/assets/calculator.js')}?v=${ver('calculator.js')}" defer></script>
 `,
   };
 

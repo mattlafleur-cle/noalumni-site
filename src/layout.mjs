@@ -2,6 +2,13 @@
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export { esc };
 
+// Cache busting: append a short content hash so browsers fetch new CSS and JS right after each deploy.
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+export const ver = (file) => {
+  try { return createHash('sha1').update(readFileSync(new URL(`./assets/${file}`, import.meta.url))).digest('hex').slice(0, 8); } catch { return '1'; }
+};
+
 // Internal link helper: adds the base path (the preview lives under /noalumni-site/) to site-relative paths.
 export const createLinker = (site) => (p) => (/^(https?:|mailto:|tel:|#)/.test(p) ? p : `${site.basePath}${p}`);
 
@@ -162,8 +169,8 @@ ${indexing ? '<meta name="robots" content="index, follow, max-image-preview:larg
 <link rel="apple-touch-icon" href="${link('/assets/brand/apple-touch-icon.png')}">
 <link rel="alternate" type="text/plain" title="Summary for AI assistants" href="${link('/llms.txt')}">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
-<link rel="stylesheet" href="${link('/assets/site.css')}">
-<script src="${link('/assets/site.js')}" defer></script>
+<link rel="stylesheet" href="${link('/assets/site.css')}?v=${ver('site.css')}">
+<script src="${link('/assets/site.js')}?v=${ver('site.js')}" defer></script>
 ${site.analytics?.cloudflareToken ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${site.analytics.cloudflareToken}"}'></script>` : ''}
 </head>
 <body>
