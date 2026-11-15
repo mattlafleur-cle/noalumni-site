@@ -654,7 +654,7 @@ export const mapleCreekPage = (site, link, team) => {
     path: '/maple-creek/',
     title: 'No Alumni and Maple Creek Advisors: Two Rooms, One Crew | No Alumni',
     description: 'No Alumni and Maple Creek Advisors: two separate rooms, led by the same crew of Greg Snyder, Matt LaFleur, and Josh Muller. Here is which one to call.',
-    schema: [{ '@type': 'Organization', '@id': `${base}/maple-creek/#maple-creek-advisors`, name: 'Maple Creek Advisors', url: MCA.url, sameAs: [MCA.url], logo: `${base}/assets/partners/maple-creek-advisors.webp`, description: 'Coaching, financial clarity, and practical operating guidance for owner-led businesses in Northeast Ohio.', areaServed: 'Northeast Ohio', knowsAbout: ['Business coaching', 'Fractional CFO services', 'Business advisory', 'Selling a business', 'The 6 Types of Working Genius'] }],
+    schema: [{ '@type': 'Organization', '@id': `${base}/maple-creek/#maple-creek-advisors`, name: 'Maple Creek Advisors', url: MCA.url, sameAs: [MCA.url], logo: `${base}/assets/partners/maple-creek-advisors-badge.webp`, description: 'Coaching, financial clarity, and practical operating guidance for owner-led businesses in Northeast Ohio.', areaServed: 'Northeast Ohio', knowsAbout: ['Business coaching', 'Fractional CFO services', 'Business advisory', 'Selling a business', 'The 6 Types of Working Genius'] }],
     body: `
 <section class="hero">
   <div class="wrap hero-grid">
@@ -670,7 +670,7 @@ export const mapleCreekPage = (site, link, team) => {
     <div class="collab-logos" aria-label="No Alumni and Maple Creek Advisors">
       <img src="${link('/assets/brand/badge.webp')}" width="240" height="240" alt="No Alumni badge, established 2023">
       <span class="collab-plus" aria-hidden="true">+</span>
-      <img src="${link('/assets/partners/maple-creek-advisors.webp')}" width="600" height="600" alt="Maple Creek Advisors logo">
+      <img src="${link('/assets/partners/maple-creek-advisors-badge.webp')}" width="600" height="600" alt="Maple Creek Advisors logo">
     </div>
   </div>
 </section>
