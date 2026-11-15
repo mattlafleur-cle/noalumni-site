@@ -629,3 +629,136 @@ ${faqSection(PODCAST_FAQ, 'Podcast questions')}
 `,
   };
 };
+
+// Collaboration page: No Alumni and Maple Creek Advisors (Matt, 2026-11-15). Unlinked from the menu on purpose;
+// share the link directly. Maple Creek facts follow maplecreekadvisors.com (site.config.mjs and content.mjs, 2026-11-15).
+const MCA = {
+  url: 'https://maplecreekadvisors.com/',
+  booking: 'https://fantastical.app/mattlafleur/maple-creek-advisors',
+  roles: { 'greg-snyder': 'Chief Culture and Team-Building Engineer', 'matt-lafleur': 'Co-founder: financial clarity, strategy, and operations', 'josh-muller': 'Co-founder: coaching, leadership, and vision' },
+};
+const MAPLE_FAQ = [
+  ['Are No Alumni and Maple Creek Advisors the same company?', 'They are two separate brands led by the same people. Greg Snyder, Matt LaFleur, and Josh Muller lead both. No Alumni focuses on culture, careers, and The 6 Types of Working Genius for teams, schools, and events. Maple Creek Advisors focuses on business coaching, fractional CFO services, and advisory work for owner-led businesses.'],
+  ['Should I contact No Alumni or Maple Creek Advisors?', 'Contact No Alumni for a keynote, workshop, team session, school program, or anything about careers and culture. Contact Maple Creek Advisors for ongoing business coaching, fractional CFO support, advisory work, or help preparing to sell a business. If you are not sure, contact either one. You will reach the same people.'],
+  ['Do both offer The 6 Types of Working Genius?', 'Yes. Greg Snyder, a Certified Working Genius Facilitator, leads Working Genius work for both. No Alumni brings it to keynotes, workshops, and team sessions. Maple Creek Advisors uses it inside ongoing coaching and advisory work with owner-led companies.'],
+  ['Where are No Alumni and Maple Creek Advisors based?', 'Both are based in Northeast Ohio. Maple Creek Advisors has offices in Cuyahoga Falls and Elyria. No Alumni works with clients and companies across the country and around the world.'],
+];
+export const mapleCreekPage = (site, link, team) => {
+  const base = site.canonicalDomain || '';
+  const order = ['greg-snyder', 'matt-lafleur', 'josh-muller'];
+  const people = order.map((id) => team.find((p) => p.id === id)).filter(Boolean);
+  return {
+    key: 'maple-creek',
+    crumb: 'No Alumni and Maple Creek Advisors',
+    faq: MAPLE_FAQ,
+    path: '/maple-creek/',
+    title: 'No Alumni and Maple Creek Advisors: One Team, Two Missions | No Alumni',
+    description: 'No Alumni and Maple Creek Advisors are led by the same people: Greg Snyder, Matt LaFleur, and Josh Muller. Here is how the two brands fit together and which one to call.',
+    schema: [{ '@type': 'Organization', '@id': `${base}/maple-creek/#maple-creek-advisors`, name: 'Maple Creek Advisors', url: MCA.url, sameAs: [MCA.url], logo: `${base}/assets/partners/maple-creek-advisors.webp`, description: 'Coaching, financial clarity, and practical operating guidance for owner-led businesses in Northeast Ohio.', areaServed: 'Northeast Ohio', knowsAbout: ['Business coaching', 'Fractional CFO services', 'Business advisory', 'Selling a business', 'The 6 Types of Working Genius'] }],
+    body: `
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Partnership</p>
+      <h1>No Alumni and Maple Creek Advisors: one team, two missions.</h1>
+      <p class="lead">Greg Snyder, Matt LaFleur, and Josh Muller lead both. No Alumni helps people and teams find the work that fits them. Maple Creek Advisors helps owners build the business around them. Same people, same values, two ways to help.</p>
+      <div class="btn-row">
+        <a class="btn btn-fill" href="${site.booking.call}" rel="noopener">Talk with us</a>
+        <a class="btn btn-outline" href="${MCA.url}" rel="noopener">Visit Maple Creek Advisors</a>
+      </div>
+    </div>
+    <div class="collab-logos" aria-label="No Alumni and Maple Creek Advisors">
+      <img src="${link('/assets/brand/badge.webp')}" width="240" height="240" alt="No Alumni badge, established 2023">
+      <span class="collab-plus" aria-hidden="true">+</span>
+      <span class="collab-mca"><img src="${link('/assets/partners/maple-creek-advisors.webp')}" width="512" height="550" alt="Maple Creek Advisors logo"></span>
+    </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="wrap">
+    <p class="eyebrow">Two brands, one team</p>
+    <h2>What each one does</h2>
+    <div class="grid grid-2">
+      <div class="card collab-card">
+        <p class="tag">No Alumni</p>
+        <h3>Careers, culture, and team energy</h3>
+        <p>A Northeast Ohio company and movement that celebrates every path to success and helps teams, schools, and organizations build workplaces where people thrive.</p>
+        <ul class="arrows">
+          <li>Working Genius keynotes, workshops, and team sessions</li>
+          <li>Workplace culture consulting and training</li>
+          <li>Practical AI consulting and upskilling</li>
+          <li>The New Game Old Game podcast and community</li>
+        </ul>
+        <a href="${link('/what-we-offer/')}">What No Alumni offers</a>
+      </div>
+      <div class="card collab-card">
+        <p class="tag">Maple Creek Advisors</p>
+        <h3>Coaching, financial clarity, and operating guidance</h3>
+        <p>An advisory firm for owner-led businesses, typically 5 to 50 people, with offices in Cuyahoga Falls and Elyria.</p>
+        <ul class="arrows">
+          <li>Business coaching and leadership team facilitation</li>
+          <li>Fractional CFO support and financial clarity</li>
+          <li>Integrated advisory for big decisions</li>
+          <li>Help preparing to sell a business, and the BUILD owner community</li>
+        </ul>
+        <a href="${MCA.url}" rel="noopener">What Maple Creek Advisors offers</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">The people behind both</p>
+    <h2>Same faces, two hats</h2>
+    <div class="collab-people">
+      ${people.map((p) => `<div class="person"><img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy"><h3>${esc(p.name)}</h3><dl class="hats"><dt>No Alumni</dt><dd>${esc(p.title)}</dd><dt>Maple Creek Advisors</dt><dd>${esc(MCA.roles[p.id])}</dd></dl></div>`).join('\n      ')}
+    </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="wrap">
+    <p class="eyebrow">Where the work overlaps</p>
+    <h2>Why it works better together</h2>
+    <div class="grid grid-3">
+      <div class="card"><h3>People and numbers in one room</h3><p>Culture problems show up on the financial statements, and financial pressure shows up in the culture. Between the two brands, one team can see both and connect them.</p></div>
+      <div class="card"><h3>Working Genius at every level</h3><p>Greg Snyder, a Certified Working Genius Facilitator, leads the work for both: a keynote for a whole association through No Alumni, or a leadership team working session inside a Maple Creek engagement.</p></div>
+      <div class="card"><h3>Built by people who have done the work</h3><p>Josh built and sold a construction company. Matt is a CPA and fractional CFO. Greg has spent more than 30 years in entrepreneurship, sales, marketing, and leadership. Both brands rest on that experience.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Which one to call</p>
+    <h2>A simple guide</h2>
+    <div class="table-wrap">
+      <table class="collab-table">
+        <thead><tr><th scope="col">If you want</th><th scope="col">Start with</th></tr></thead>
+        <tbody>
+          <tr><td>A keynote, workshop, or team session</td><td><a href="${link('/speaking/')}">No Alumni</a></td></tr>
+          <tr><td>A school, career, or workforce program</td><td><a href="${link('/what-we-offer/')}">No Alumni</a></td></tr>
+          <tr><td>Ongoing business coaching for an owner or leadership team</td><td><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
+          <tr><td>Fractional CFO support or clearer financial reporting</td><td><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
+          <tr><td>Help preparing to sell a business</td><td><a href="${MCA.url}" rel="noopener">Maple Creek Advisors</a></td></tr>
+          <tr><td>Not sure yet</td><td>Either one. You will reach the same people.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+${faqSection(MAPLE_FAQ, 'Questions about the partnership')}
+<section class="section-tight">
+  <div class="wrap">
+    <div class="band">
+      <h2>One conversation is enough to start.</h2>
+      <p class="lead">Tell us what is going on with your people, your team, or your business. We will point you to the right place, whichever brand it lives under.</p>
+      <div class="btn-row">
+        <a class="btn btn-fill" href="${site.booking.call}" rel="noopener">Schedule a call with No Alumni</a>
+        <a class="btn btn-outline" href="${MCA.booking}" rel="noopener">Schedule with Maple Creek Advisors</a>
+      </div>
+    </div>
+    <p class="muted small-note center">Maple Creek Advisors is not a registered CPA firm and does not provide attest services.</p>
+  </div>
+</section>
+`,
+  };
+};
