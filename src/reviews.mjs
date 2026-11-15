@@ -132,11 +132,16 @@ export const clients = [
 // Organizations are named with Matt's OK (he supplied their logos for this page, 2026-11-13).
 // "featured" are the four Matt chose in "Real_participant_quotes.docx" (spelling lightly corrected there).
 // The rest are word for word from the response sheets; excerpts only drop text from the end of an answer.
+// Two most recent events only (JMA team workshop, 13 responses; PPA keynote, 7 responses).
+// A snapshot, not a measure of total reach: present as percentages and "our two most recent events".
 export const surveyStats = {
-  responses: 14,
-  fives: 13,
+  responses: 20,
+  fives: 18,
+  fours: 2,
   average: '4.9',
-  lengthRight: 12,
+  lengthRight: 17,
+  wantedMore: 2,
+  pctFive: 90,
   asOf: 'November 2026',
 };
 
@@ -154,4 +159,9 @@ export const surveyQuotes = [
   { text: 'Adjust meetings so the right people are in the room', who: jma },
   { text: 'I know leadership will use it for future planning and focus groups', who: jma },
   { text: 'What I need to delegate based on my profile', who: ppa },
+  { text: 'I want to post our results on our bulletin board so we can be more aware of each other’s and our own styles!', who: ppa },
+  { text: 'I’ll be more mindful on what tasks I agree to take on', who: jma },
+  { text: 'I’d like to have you facilitate a video led Working Genius workshop for my team', who: ppa },
+  { text: 'Focusing on where my talents are in relation to the team', who: jma },
+  { text: 'We want to do WG for all of our teammates', who: ppa },
 ];

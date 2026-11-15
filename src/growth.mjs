@@ -209,7 +209,7 @@ const INDUSTRIES = [
     stat: true,
     faq: [
       ['How do real estate teams use Working Genius?', 'Team leaders use the team map to put agents, ISAs, and operations staff on the work that gives them energy, and to see where leads, listings, and follow-up stall.'],
-      ['What did participants say after a real estate team workshop?', 'In an anonymous survey after a recent real estate team session, every participant rated it 5 out of 5 for usefulness. Several said they would change who joins which meetings based on their results.'],
+      ['What did participants say after a real estate team workshop?', 'In an anonymous survey after a recent real estate team workshop, every participant rated it 4 or 5 out of 5 for usefulness, for an average of 4.9. Several said they would change who joins which meetings based on their results.'],
       ['Can you run a Working Genius session for a whole brokerage office?', 'Yes. We build each session around the group: a keynote for a large office, a working session for a leadership team, or both.'],
     ],
   },
@@ -245,7 +245,7 @@ const industryPage = (site, link, ind) => ({
   <div class="wrap">
     <p class="eyebrow">In their words</p>
     <h2>What participants say</h2>
-    ${ind.stat ? `<ul class="stats"><li><strong>10 of 10</strong><span>rated a recent real estate team session 5 out of 5 for usefulness (anonymous survey, November 2026)</span></li></ul>` : ''}
+    ${ind.stat ? `<ul class="stats"><li><strong>4.9 / 5</strong><span>average usefulness rating from a recent real estate team workshop (anonymous survey, November 2026)</span></li></ul>` : ''}
     <div class="featured">
       ${(ind.quotes || []).map((n) => quoteCard(featuredQuotes[n])).join('')}
       ${(ind.reviewTitles || []).map((t) => byTitle(t)).filter(Boolean).map(reviewQuote).join('')}
@@ -301,9 +301,9 @@ const speakingPage = (site, link) => ({
       <p class="note-line"><a href="${link('/assets/No-Alumni-Working-Genius-Speaking.pdf')}">Download the one-page overview (PDF)</a></p>
     </div>
     <ul class="stats stats-stack">
-      <li><strong>${surveyStats.fives} of ${surveyStats.responses}</strong><span>recent participants rated their session 5 out of 5</span></li>
-      <li><strong>${trustpilot.score} / 5</strong><span>on Trustpilot from ${trustpilot.count} reviews</span></li>
-      <li><strong>${clients.length}</strong><span>organizations across trades, healthcare, real estate, transportation, and education</span></li>
+      <li><strong>${clients.length}+</strong><span>organizations, from trades and healthcare to real estate, transportation, and education</span></li>
+      <li><strong>${trustpilot.score} / 5</strong><span>on Trustpilot</span></li>
+      <li><strong>${surveyStats.pctFive}%</strong><span>of participants at our two most recent events rated their session 5 out of 5</span></li>
     </ul>
   </div>
 </section>

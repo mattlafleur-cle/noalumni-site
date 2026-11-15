@@ -96,7 +96,7 @@ const FAQ = {
     ['Does No Alumni work with schools?', 'Yes. Contact us to bring our message to your school or career-tech program, or to talk about training and workforce development for students.'],
   ],
   work: [
-    ['What do clients say about No Alumni?', `No Alumni has a ${trustpilot.score} out of 5 rating on Trustpilot from ${trustpilot.count} reviews (as of ${trustpilot.asOf}), and in anonymous post-session surveys ${surveyStats.fives} of ${surveyStats.responses} participants rated their session 5 out of 5 for usefulness. Reviewers most often mention clearer teamwork and communication, a better understanding of what energizes and drains each person, and Greg Snyder's practical, easygoing facilitation.`],
+    ['What do clients say about No Alumni?', `No Alumni has a ${trustpilot.score} out of 5 rating on Trustpilot from ${trustpilot.count} reviews (as of ${trustpilot.asOf}), and in anonymous surveys from our two most recent events, ${surveyStats.pctFive} percent of participants rated their session 5 out of 5 for usefulness and every rating was a 4 or 5. Reviewers most often mention clearer teamwork and communication, a better understanding of what energizes and drains each person, and Greg Snyder's practical, easygoing facilitation.`],
     ['What kinds of organizations has No Alumni worked with?', 'Reviewers include a small construction company that has worked with No Alumni for over a year, a physical therapy practice that used Working Genius to hire, office teams, community organizations, and families.'],
     ['Where do the reviews and comments on this page come from?', 'The client reviews come from No Alumni’s public Trustpilot profile at trustpilot.com/review/noalumni.com, where you can read every review in full. The participant comments come from anonymous surveys sent after sessions, quoted word for word.'],
   ],
@@ -226,7 +226,7 @@ export function pages(site, link) {
   <div class="wrap">
     <p class="eyebrow">What clients say</p>
     <h2>Real teams. Real results.</h2>
-    <p class="lead">${trustpilot.score} out of 5 on Trustpilot from ${trustpilot.count} reviews, and ${surveyStats.fives} of ${surveyStats.responses} recent session participants rated us 5 out of 5.</p>
+    <p class="lead">Teams in trades, healthcare, real estate, transportation, and education. ${trustpilot.score} out of 5 on Trustpilot, and at our two most recent events, ${surveyStats.pctFive} percent of participants rated their session 5 out of 5.</p>
     ${quoteStrip([reviews[0], reviews[1], reviews[4]])}
     <a class="btn btn-outline" href="${link('/our-work/')}">See our work</a>
   </div>
@@ -571,11 +571,11 @@ ${clients.length ? `<section class="section-tight" aria-labelledby="clients-h"><
   <div class="wrap">
     <p class="eyebrow">Straight from the room</p>
     <h2>What participants told us afterward</h2>
-    <p class="lead">Anonymous post-session surveys from the Jose Medina &amp; Associates team workshop and the Private Physicians Alliance keynote, ${surveyStats.asOf}.</p>
+    <p class="lead">A snapshot from our two most recent events, the Jose Medina &amp; Associates team workshop and the Private Physicians Alliance keynote (${surveyStats.asOf}).</p>
     <ul class="stats">
-      <li><strong>${surveyStats.fives} of ${surveyStats.responses}</strong><span>rated the session 5 out of 5 for usefulness</span></li>
+      <li><strong>${surveyStats.pctFive}%</strong><span>rated their session 5 out of 5 for usefulness</span></li>
       <li><strong>${surveyStats.average} / 5</strong><span>average usefulness rating</span></li>
-      <li><strong>${surveyStats.lengthRight} of ${surveyStats.responses}</strong><span>said the length was about right</span></li>
+      <li><strong>100%</strong><span>rated it a 4 or 5</span></li>
     </ul>
     <div class="featured">
       ${featuredQuotes.map((q) => `<figure class="fq"><blockquote><p>“${esc(q.text)}”</p></blockquote><figcaption>${esc(q.who)}</figcaption></figure>`).join('\n      ')}
