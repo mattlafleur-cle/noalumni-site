@@ -37,6 +37,8 @@ const banned = [
   [/\$\{/, 'an unfilled template variable'],
   // People no longer affiliated with No Alumni (Matt, 2026-11-13). Their names must not appear anywhere.
   [/\brandi\b|borosh/i, 'a former team member (Randi Borosh)'],
+  // Matt, 2026-11-15: no CPA-firm disclaimer language anywhere on the No Alumni site.
+  [/registered CPA firm|attest services/i, 'CPA-firm disclaimer language'],
   [/undefined|\bnull\b|\[object Object\]/, 'a template value that did not resolve'],
 ];
 
