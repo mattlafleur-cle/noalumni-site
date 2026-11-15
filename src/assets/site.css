@@ -374,3 +374,10 @@ select { font: inherit; }
 .ep h3 a:hover { text-decoration: underline; }
 .ep p { margin: 0; }
 .host { max-width: 360px; margin: 0 auto; width: 100%; }
+/* Podcast icon: episode thumbnails and home page listen section */
+.ep { display: grid; grid-template-columns: 64px 1fr; gap: 18px; align-items: start; }
+.ep-icon { width: 64px; height: 64px; border-radius: 50%; }
+@media (max-width: 520px) { .ep { grid-template-columns: 44px 1fr; gap: 12px; } .ep-icon { width: 44px; height: 44px; } }
+.listen-head { display: flex; align-items: center; gap: 16px; margin-bottom: 4px; }
+.listen-head h2 { margin-bottom: 0; }
+.listen-icon { width: 88px; height: 88px; border-radius: 50%; flex: none; }

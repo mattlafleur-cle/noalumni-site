@@ -210,8 +210,8 @@ export function pages(site, link) {
       <a class="btn btn-outline" href="${site.shopUrl}" rel="noopener">Shop No Alumni gear</a>
     </div>
     <div>
-      <p class="eyebrow">Listen</p>
-      <h2>New Game Old Game</h2>
+      <div class="listen-head"><img class="listen-icon" src="${link('/assets/podcast/icon.webp')}" alt="" width="88" height="88" loading="lazy"><div><p class="eyebrow">Listen</p>
+      <h2>New Game Old Game</h2></div></div>
       <p>The No Alumni podcast: honest conversations about work, skills, and careers, and why the old rules no longer add up.</p>
       <p><a class="card-link" href="${link('/new-game-old-game/')}">Explore the show and the Old Game vs. New Game framework</a></p>
       <div class="btn-row">

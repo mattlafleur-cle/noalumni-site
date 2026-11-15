@@ -571,7 +571,7 @@ export const podcastPage = (site, link, team) => {
     <p class="eyebrow">Listen</p>
     <h2>Episodes</h2>
     <ol class="episodes">
-      ${EPISODES.map((e) => `<li class="ep"><div class="ep-meta"><span class="tag">${e.n}</span><span class="muted">${e.label} · ${e.mins} min</span></div><h3><a href="${e.url}" rel="noopener">${esc(e.title)}</a></h3><p>${esc(e.summary)}</p></li>`).join('\n      ')}
+      ${EPISODES.map((e) => `<li class="ep"><img class="ep-icon" src="${link('/assets/podcast/icon.webp')}" alt="" width="64" height="64" loading="lazy"><div class="ep-body"><div class="ep-meta"><span class="tag">${e.n}</span><span class="muted">${e.label} · ${e.mins} min</span></div><h3><a href="${e.url}" rel="noopener">${esc(e.title)}</a></h3><p>${esc(e.summary)}</p></div></li>`).join('\n      ')}
     </ol>
     <p class="muted">New to the show? Start with Episode 1 and the two-part Episode 2, which lay out the whole framework. All episodes are on <a href="${spotify}" rel="noopener">Spotify</a>, <a href="${APPLE}" rel="noopener">Apple Podcasts</a>, and <a href="${youtube}" rel="noopener">YouTube</a>.</p>
   </div>
