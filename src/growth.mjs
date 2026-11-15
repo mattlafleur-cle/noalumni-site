@@ -310,6 +310,18 @@ const speakingPage = (site, link) => ({
     </div>
   </div>
 </section>
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">In the room</p>
+    <h2>From the main stage to the conference table</h2>
+    <div class="photo-grid">
+      <figure class="ph ph-wide"><img src="${link('/assets/photos/ppa-keynote-stage.webp')}" width="1600" height="1200" loading="lazy" alt="Working Genius keynote on stage in a hotel ballroom, with a Galvanizing slide on the screens and attendees at round tables"><figcaption>Keynote at the Private Physicians Alliance 2026 Annual Meeting</figcaption></figure>
+      <figure class="ph"><img src="${link('/assets/photos/ppa-keynote-room.webp')}" width="1600" height="1200" loading="lazy" alt="A full ballroom answering a live poll on the screens: if your workday had a dashboard warning light, which one would be on?"><figcaption>Live polling keeps a large room involved</figcaption></figure>
+      <figure class="ph"><img src="${link('/assets/photos/workshop-cofacilitating.webp')}" width="480" height="640" loading="lazy" alt="Two No Alumni facilitators presenting the three phases of work to a team seated at a conference table"><figcaption>A team workshop on the three phases of work</figcaption></figure>
+      <figure class="ph"><img src="${link('/assets/photos/workshop-matt.webp')}" width="370" height="493" loading="lazy" alt="Matt LaFleur facilitating a Working Genius session in front of two screens showing the stages of work"><figcaption>Working sessions for leadership teams</figcaption></figure>
+    </div>
+  </div>
+</section>
 <section class="section-tight"><div class="wrap"><h2 class="eyebrow center">Groups we have worked with</h2>${logoWall(link)}</div></section>
 <section class="section section-alt">
   <div class="wrap">
@@ -577,6 +589,17 @@ export const podcastPage = (site, link, team) => {
       ${EPISODES.map((e) => `<li class="ep"><img class="ep-icon" src="${link('/assets/podcast/icon.webp')}" alt="" width="64" height="64" loading="lazy"><div class="ep-body"><div class="ep-meta"><span class="tag">${e.n}</span><span class="muted">${e.label} · ${e.mins} min</span></div><h3><a href="${e.url}" rel="noopener">${esc(e.title)}</a></h3><p>${esc(e.summary)}</p></div></li>`).join('\n      ')}
     </ol>
     <p class="muted">New to the show? Start with Episode 1 and the two-part Episode 2, which lay out the whole framework. All episodes are on <a href="${spotify}" rel="noopener">Spotify</a>, <a href="${APPLE}" rel="noopener">Apple Podcasts</a>, and <a href="${youtube}" rel="noopener">YouTube</a>.</p>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="wrap">
+    <p class="eyebrow">The mindset</p>
+    <h2>What the show is about, in a few words</h2>
+    <div class="art-quotes art-quotes-3">
+      <figure class="art-quote"><img src="${link('/assets/brand-art/quote-make-a-mess.webp')}" width="640" height="640" loading="lazy" alt="No Alumni graphic over tangled wiring: The path to discovery is not pretty. Do not be afraid to make a mess."></figure>
+      <figure class="art-quote"><img src="${link('/assets/brand-art/quote-spark-change.webp')}" width="640" height="640" loading="lazy" alt="No Alumni graphic: One person can spark change, but a team can ignite a revolution."></figure>
+      <figure class="art-quote"><img src="${link('/assets/brand-art/quote-you-have-value.webp')}" width="640" height="640" loading="lazy" alt="A smiling warehouse worker in a safety vest under the words You have value, with the No Alumni badge"></figure>
+    </div>
   </div>
 </section>
 <section class="section">

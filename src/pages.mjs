@@ -452,6 +452,48 @@ ${faqSection(FAQ.contact)}
     <a class="btn btn-fill" href="${site.shopUrl}" rel="noopener">Visit the shop</a>
   </div>
 </section>
+<section class="section section-alt">
+  <div class="wrap">
+    <p class="eyebrow">No Alumni in the wild</p>
+    <h2>Every path, repped proudly</h2>
+    <p class="lead">Apprentices, tradespeople, creatives, and the clients we work with. These are real people who wear the brand because they believe every path to success deserves respect.</p>
+    <div class="wild">
+      <figure class="wild-item"><img src="${link('/assets/photos/fan-apprentice-hardhat.webp')}" width="480" height="640" loading="lazy" alt="A young construction apprentice in a safety vest smiling at a hard hat with a No Alumni sticker on a jobsite"><figcaption>Hard hats, safety vests, and a No Alumni sticker</figcaption></figure>
+      <figure class="wild-item"><img src="${link('/assets/photos/fan-na-hat.webp')}" width="640" height="640" loading="lazy" alt="A smiling young man wearing a No Alumni trucker hat"></figure>
+      <figure class="wild-item"><img src="${link('/assets/photos/greg-drywall.webp')}" width="480" height="640" loading="lazy" alt="Greg Snyder as a young man finishing drywall on a ladder, holding a mud pan and knife"><figcaption>Before the keynotes: Greg Snyder in his drywall days</figcaption></figure>
+      <figure class="wild-item"><img src="${link('/assets/photos/fan-studio.webp')}" width="640" height="480" loading="lazy" alt="A musician in a recording studio pointing to his No Alumni shirt, with a keyboard and guitar behind him"><figcaption>From the jobsite to the studio</figcaption></figure>
+      <figure class="wild-item"><img src="${link('/assets/photos/fan-hoodie.webp')}" width="360" height="640" loading="lazy" alt="A woman pointing to the No Alumni logo on her hoodie"></figure>
+      <figure class="wild-item"><img src="${link('/assets/photos/client-team-railcar.webp')}" width="640" height="480" loading="lazy" alt="Four men posing in front of a red B&amp;O railcar after a team session"><figcaption>With a client team after a session</figcaption></figure>
+      <figure class="wild-item"><img src="${link('/assets/photos/fan-dcp-hat.webp')}" width="480" height="640" loading="lazy" alt="A man in a work hat wearing a No Alumni hoodie, in black and white"></figure>
+      <figure class="wild-item"><img src="${link('/assets/photos/fan-beard-hoodie.webp')}" width="512" height="640" loading="lazy" alt="Close-up of the No Alumni skull logo on a black hoodie"></figure>
+    </div>
+    <p class="muted small-note">Want to be featured? Tag us on social media wearing your gear.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Brand art</p>
+    <h2>Words we live by</h2>
+    <p class="lead">The ideas behind the movement, in the graphics we share with our community.</p>
+    <div class="art-quotes">
+      <figure class="art-quote"><img src="${link('/assets/brand-art/quote-spark-change.webp')}" width="640" height="640" loading="lazy" alt="No Alumni graphic: One person can spark change, but a team can ignite a revolution."></figure>
+      <figure class="art-quote"><img src="${link('/assets/brand-art/quote-build-each-other.webp')}" width="640" height="640" loading="lazy" alt="No Alumni sticker on a rusty toolbox: Our most important build is building up each other."></figure>
+      <figure class="art-quote"><img src="${link('/assets/brand-art/quote-you-have-value.webp')}" width="640" height="640" loading="lazy" alt="A smiling warehouse worker in a safety vest under the words You have value, with the No Alumni badge"></figure>
+      <figure class="art-quote"><img src="${link('/assets/brand-art/quote-make-a-mess.webp')}" width="640" height="640" loading="lazy" alt="No Alumni graphic over tangled wiring: The path to discovery is not pretty. Do not be afraid to make a mess."></figure>
+      <figure class="art-quote"><img src="${link('/assets/brand-art/quote-to-the-bones.webp')}" width="640" height="640" loading="lazy" alt="A black No Alumni skull painted on a yellow wall: No Alumni to the bones."></figure>
+    </div>
+    <h3 class="art-sub">Marks and designs</h3>
+    <div class="art-marks">
+      <figure class="art-mark"><div><img src="${link('/assets/brand-art/mark-grad-cap-skull.webp')}" width="640" height="640" loading="lazy" alt="Round No Alumni badge with a skull in a graduation cap and NA glasses, established 2023"></div><figcaption>The graduate</figcaption></figure>
+      <figure class="art-mark"><div><img src="${link('/assets/brand-art/mark-na-shield.webp')}" width="534" height="640" loading="lazy" alt="No Alumni NA shield with a green skull"></div><figcaption>The NA shield</figcaption></figure>
+      <figure class="art-mark"><div><img src="${link('/assets/brand-art/mark-skull-black.webp')}" width="640" height="640" loading="lazy" alt="Black No Alumni circle badge with a skull wearing NA glasses"></div><figcaption>Skull badge</figcaption></figure>
+      <figure class="art-mark"><div><img src="${link('/assets/brand-art/mark-script-circle.webp')}" width="577" height="640" loading="lazy" alt="Round No Alumni script badge, established 2023"></div><figcaption>Script badge</figcaption></figure>
+      <figure class="art-mark"><div><img src="${link('/assets/brand-art/mark-varsity-culture-productivity.webp')}" width="640" height="640" loading="lazy" alt="No Alumni varsity wordmark with the words Culture and Productivity"></div><figcaption>Varsity wordmark</figcaption></figure>
+      <figure class="art-mark"><div><img src="${link('/assets/brand-art/mark-holiday-skull.webp')}" width="640" height="630" loading="lazy" alt="Holiday No Alumni badge: a skull in a Santa hat and peppermint glasses"></div><figcaption>Holiday edition</figcaption></figure>
+      <figure class="art-mark"><div><img src="${link('/assets/brand-art/sketchbook-patches.webp')}" width="640" height="445" loading="lazy" alt="Design sketches of No Alumni patches, hats, and goggles"></div><figcaption>From the sketchbook</figcaption></figure>
+    </div>
+  </div>
+</section>
 `,
   };
 
@@ -580,6 +622,12 @@ ${clients.length ? `<section class="section-tight" aria-labelledby="clients-h"><
       <li><strong>${surveyStats.average} / 5</strong><span>average usefulness rating</span></li>
       <li><strong>100%</strong><span>rated it a 4 or 5</span></li>
     </ul>
+    <div class="photo-strip">
+      <figure class="ph ph-pos-faces"><img src="${link('/assets/photos/ppa-matt-greg.webp')}" width="1000" height="1333" loading="lazy" alt="Matt LaFleur and Greg Snyder at the Private Physicians Alliance 2026 Annual Meeting"><figcaption>Matt and Greg at the PPA 2026 Annual Meeting</figcaption></figure>
+      <figure class="ph"><img src="${link('/assets/photos/ppa-keynote-room.webp')}" width="1600" height="1200" loading="lazy" alt="Private Physicians Alliance members at round tables during a Working Genius keynote with a live poll on screen"><figcaption>The PPA keynote room</figcaption></figure>
+      <figure class="ph"><img src="${link('/assets/photos/workshop-cofacilitating.webp')}" width="480" height="640" loading="lazy" alt="Two No Alumni facilitators leading a Working Genius team workshop at a conference table"><figcaption>A Working Genius team workshop</figcaption></figure>
+      <figure class="ph"><img src="${link('/assets/photos/rush-enterprises-lobby.webp')}" width="480" height="640" loading="lazy" alt="The lobby of Rush Enterprises headquarters with the Rush logo on the wall"><figcaption>Visiting Rush Enterprises</figcaption></figure>
+    </div>
     <div class="featured">
       ${featuredQuotes.map((q) => `<figure class="fq"><blockquote><p>“${esc(q.text)}”</p></blockquote><figcaption>${esc(q.who)}</figcaption></figure>`).join('\n      ')}
     </div>
