@@ -715,7 +715,7 @@ export const mapleCreekPage = (site, link, team) => {
 <section class="section">
   <div class="wrap">
     <p class="eyebrow">The people behind both</p>
-    <h2>Same faces, two hats</h2>
+    <h2>Same faces, multiple solutions</h2>
     <div class="collab-people">
       ${people.map((p) => `<div class="person"><img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy"><h3>${esc(p.name)}</h3><dl class="hats"><dt>No Alumni</dt><dd>${MCA.naFounders.includes(p.id) ? '<span class="cofounder">Co-founder</span>' : ''}${esc(p.title)}</dd><dt>Maple Creek Advisors</dt><dd>${MCA.mcaFounders.includes(p.id) ? '<span class="cofounder">Co-founder</span>' : ''}${esc(MCA.roles[p.id])}</dd></dl></div>`).join('\n      ')}
     </div>

@@ -85,7 +85,7 @@ const FAQ = {
   ],
   who: [
     ['What is the mission of No Alumni?', 'Our mission is to promote, illuminate, and equip. We promote the voices of people who chose a different path, illuminate real stories of how they got where they are, and equip people and businesses with tools, training, and community resources.'],
-    ['Who is on the No Alumni team?', 'The No Alumni team includes Greg Snyder, Matt LaFleur, Dave Hall, Josh Muller, and Nolan Snyder.'],
+    ['Who is on the No Alumni team?', 'No Alumni was co-founded by Greg Snyder and Matt LaFleur. The team includes Greg Snyder, Matt LaFleur, Dave Hall, Josh Muller, and Nolan Snyder.'],
     ['When was No Alumni founded?', 'No Alumni was established in 2023.'],
     ['Where does No Alumni work?', 'No Alumni is based in Northeast Ohio and works with clients and companies across the United States and around the world.'],
     ['How can I get involved with No Alumni?', 'Follow us on social media, listen to the New Game Old Game podcast, wear No Alumni gear, or contact us to book a speaker, bring our message to your school, or start a conversation with your business or team.'],
@@ -382,7 +382,7 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
     <h2>We need you to join us.</h2>
     <p class="lead">An expert, eclectic, and specialized team of leaders, innovators, and practitioners who bring diverse strengths together to inspire tomorrow’s workforce and redefine what’s possible.</p>
     <div class="people">
-      ${team.map((p) => `<div class="person" id="${p.id}">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3><p class="role">${esc(p.title)}</p><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
+      ${team.map((p) => `<div class="person" id="${p.id}">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3>${['greg-snyder', 'matt-lafleur'].includes(p.id) ? '<span class="cofounder">Co-founder</span>' : ''}<p class="role">${esc(p.title)}</p><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
     </div>
     <p class="wild-link"><a href="${link('/shop/#in-the-wild')}">See No Alumni in the wild: the apprentices, tradespeople, and fans who rep the movement →</a></p>
   </div>
