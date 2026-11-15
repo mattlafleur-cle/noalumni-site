@@ -222,6 +222,19 @@ export function pages(site, link) {
     </div>
   </div>
 </section>
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">No Alumni in the wild</p>
+    <h2>Every path, repped proudly</h2>
+    <div class="wild-strip">
+      <a href="${link('/shop/#in-the-wild')}"><img src="${link('/assets/photos/fan-apprentice-hardhat.webp')}" width="480" height="640" loading="lazy" alt="A young construction apprentice smiling at a hard hat with a No Alumni sticker"></a>
+      <a href="${link('/shop/#in-the-wild')}"><img src="${link('/assets/photos/fan-na-hat.webp')}" width="640" height="640" loading="lazy" alt="A smiling young man wearing a No Alumni trucker hat"></a>
+      <a href="${link('/shop/#in-the-wild')}"><img src="${link('/assets/photos/greg-drywall.webp')}" width="480" height="640" loading="lazy" alt="Greg Snyder as a young man finishing drywall"></a>
+      <a href="${link('/shop/#in-the-wild')}"><img src="${link('/assets/photos/fan-studio.webp')}" width="640" height="480" loading="lazy" alt="A musician in his studio pointing to his No Alumni shirt"></a>
+    </div>
+    <a class="btn btn-outline" href="${link('/shop/#in-the-wild')}">See the community</a>
+  </div>
+</section>
 <section class="section section-alt">
   <div class="wrap">
     <p class="eyebrow">What clients say</p>
@@ -370,6 +383,7 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
     <div class="people">
       ${team.map((p) => `<div class="person" id="${p.id}">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3><p class="role">${esc(p.title)}</p><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
     </div>
+    <p class="wild-link"><a href="${link('/shop/#in-the-wild')}">See No Alumni in the wild: the apprentices, tradespeople, and fans who rep the movement →</a></p>
   </div>
 </section>
 <section class="section section-alt">
@@ -452,7 +466,7 @@ ${faqSection(FAQ.contact)}
     <a class="btn btn-fill" href="${site.shopUrl}" rel="noopener">Visit the shop</a>
   </div>
 </section>
-<section class="section section-alt">
+<section class="section section-alt" id="in-the-wild">
   <div class="wrap">
     <p class="eyebrow">No Alumni in the wild</p>
     <h2>Every path, repped proudly</h2>

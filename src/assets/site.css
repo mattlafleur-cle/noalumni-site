@@ -236,7 +236,7 @@ button.btn:disabled { opacity: 0.7; cursor: default; }
 .reviews { columns: 3 300px; column-gap: 20px; margin-top: 20px; }
 .review { break-inside: avoid; margin: 0 0 20px; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
 .review figcaption { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
-.review figcaption .tag { margin: 0; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-text); }
+.review figcaption .tag { margin: 0; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-text); }
 .review blockquote { margin: 0; }
 .review-title { font-weight: 800; color: var(--orange); margin-bottom: 8px; }
 .review-src { margin: 12px 0 0; color: var(--muted); font-size: 0.85rem; }
@@ -431,3 +431,35 @@ select { font: inherit; }
 .art-marks { grid-template-columns: repeat(7, 1fr); }
 @media (max-width: 1000px) { .art-marks { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 600px) { .art-marks { grid-template-columns: repeat(2, 1fr); } }
+
+/* Community links */
+.wild-link { margin-top: 28px; font-weight: 600; }
+.wild-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0 28px; }
+.wild-strip a { display: block; aspect-ratio: 1; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+.wild-strip img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+.wild-strip a:hover img { transform: scale(1.04); }
+@media (max-width: 700px) { .wild-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+
+/* Layout safety: let grid and form children shrink instead of overflowing */
+.grid > *, .calc-grid > *, .hero-grid > *, .field { min-width: 0; }
+.field input, .field select, .field textarea { width: 100%; max-width: 100%; box-sizing: border-box; }
+.calc { max-width: 100%; box-sizing: border-box; }
+@media (max-width: 500px) { .calc { padding: 20px 16px; } }
+
+/* Polish pass, Nov 2026 */
+@media (max-width: 640px) {
+  .tm-row .field label { font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tm-row { column-gap: 8px; }
+}
+/* Quote graphics: swipe row on phones instead of an orphaned grid */
+@media (max-width: 600px) {
+  .art-quotes, .art-quotes-3 { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 8px; margin-right: -16px; padding-right: 16px; -webkit-overflow-scrolling: touch; }
+  .art-quotes .art-quote { flex: 0 0 78%; scroll-snap-align: start; }
+  .art-marks .art-mark:last-child { grid-column: 1 / -1; }
+  .art-marks .art-mark:last-child > div { aspect-ratio: 2 / 1; }
+  .wild { columns: 2; column-gap: 12px; }
+  .wild-item { margin-bottom: 12px; }
+  .wild-item figcaption { font-size: 0.72rem; padding: 22px 8px 6px; }
+}
+.featured-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .featured-3 { grid-template-columns: 1fr; } }

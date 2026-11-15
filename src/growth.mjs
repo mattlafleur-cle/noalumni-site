@@ -246,7 +246,7 @@ const industryPage = (site, link, ind) => ({
     <p class="eyebrow">In their words</p>
     <h2>What participants say</h2>
     ${ind.stat ? `<ul class="stats"><li><strong>4.9 / 5</strong><span>average usefulness rating from a recent real estate team workshop (anonymous survey, November 2026)</span></li></ul>` : ''}
-    <div class="featured">
+    <div class="featured${(ind.quotes || []).length === 3 ? " featured-3" : ""}">
       ${(ind.quotes || []).map((n) => quoteCard(featuredQuotes[n])).join('')}
       ${(ind.reviewTitles || []).map((t) => byTitle(t)).filter(Boolean).map(reviewQuote).join('')}
     </div>
