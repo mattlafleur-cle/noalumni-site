@@ -76,6 +76,7 @@ export function baseGraph(site, team = []) {
       contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: site.contact.email, telephone: `+1-${site.contact.phone}`, areaServed: 'Worldwide', availableLanguage: 'English' },
       sameAs: site.socials.map((s) => s.url).concat([site.shopUrl, site.eventsUrl]),
       member: team.map((p) => ({ '@id': `${siteUrl(site)}/who-we-are/#${p.id}` })),
+      founder: ['greg-snyder', 'matt-lafleur'].map((id) => ({ '@id': `${siteUrl(site)}/who-we-are/#${id}` })), // Co-founders (Matt, 2026-11-15)
     },
     { '@type': 'WebSite', '@id': `${siteUrl(site)}/#website`, url: `${siteUrl(site)}/`, name: site.siteName, description: site.tagline, publisher: { '@id': org }, inLanguage: 'en-US' },
     ...team.map((p) => ({
