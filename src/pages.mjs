@@ -365,7 +365,7 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
 <section class="section">
   <div class="wrap">
     <p class="eyebrow">The many faces of No Alumni</p>
-    <h2>Your neighbors, and we need you to join us.</h2>
+    <h2>We need you to join us.</h2>
     <p class="lead">An expert, eclectic, and specialized team of leaders, innovators, and practitioners who bring diverse strengths together to inspire tomorrow’s workforce and redefine what’s possible.</p>
     <div class="people">
       ${team.map((p) => `<div class="person" id="${p.id}">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3><p class="role">${esc(p.title)}</p><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
