@@ -300,11 +300,14 @@ const speakingPage = (site, link) => ({
       </div>
       <p class="note-line"><a href="${link('/assets/No-Alumni-Working-Genius-Speaking.pdf')}">Download the one-page overview (PDF)</a></p>
     </div>
+    <div>
+    <figure class="cert-badge cert-badge-sm"><img src="${link('/assets/brand/working-genius-certified.webp')}" width="400" height="400" alt="The 6 Types of Working Genius Certified badge"><figcaption>Certified Working Genius facilitators</figcaption></figure>
     <ul class="stats stats-stack">
       <li><strong>${clients.length}+</strong><span>organizations, from trades and healthcare to real estate, transportation, and education</span></li>
       <li><strong>${trustpilot.score} / 5</strong><span>on Trustpilot</span></li>
       <li><strong>${surveyStats.pctFive}%</strong><span>of participants at our two most recent events rated their session 5 out of 5</span></li>
     </ul>
+    </div>
   </div>
 </section>
 <section class="section-tight"><div class="wrap"><h2 class="eyebrow center">Groups we have worked with</h2>${logoWall(link)}</div></section>

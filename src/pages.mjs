@@ -277,14 +277,17 @@ ${ctaBand(site, link, 'Not sure where to start?', 'Tell us about your team in a 
     description: 'Working Genius helps teams find their natural strengths, reduce frustration, and build an engaged workforce, no degree required. Take the assessment.',
     body: `
 <section class="hero">
-  <div class="wrap narrow">
-    <p class="eyebrow">Team energy</p>
-    <h1>The 6 Types of Working Genius</h1>
-    <p class="lead">In today’s world of high turnover and disengagement, the Working Genius framework helps companies build a thriving, empowered workforce. No degree required.</p>
-    <div class="btn-row">
-      <a class="btn btn-fill" href="${site.workingGeniusAssessmentUrl}" rel="noopener">Take the assessment</a>
-      <a class="btn btn-outline" href="${link('/contact-us/')}">Explore partnerships</a>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Team energy</p>
+      <h1>The 6 Types of Working Genius</h1>
+      <p class="lead">In today’s world of high turnover and disengagement, the Working Genius framework helps companies build a thriving, empowered workforce. No degree required.</p>
+      <div class="btn-row">
+        <a class="btn btn-fill" href="${site.workingGeniusAssessmentUrl}" rel="noopener">Take the assessment</a>
+        <a class="btn btn-outline" href="${link('/contact-us/')}">Explore partnerships</a>
+      </div>
     </div>
+    <figure class="cert-badge"><img src="${link('/assets/brand/working-genius-certified.webp')}" width="400" height="400" alt="The 6 Types of Working Genius Certified badge"><figcaption>Certified and licensed to facilitate The 6 Types of Working Genius</figcaption></figure>
   </div>
 </section>
 <section class="section section-alt">
