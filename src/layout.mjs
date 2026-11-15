@@ -151,7 +151,7 @@ ${indexing ? '<meta name="robots" content="index, follow, max-image-preview:larg
 <meta property="og:image" content="${shareImage}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="${esc(site.siteName)}: ${esc(site.tagline)}">
+<meta property="og:image:alt" content="${esc(page.ogAlt || `${site.siteName}: ${site.tagline}`)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(page.title)}">
 <meta name="twitter:description" content="${esc(page.description)}">

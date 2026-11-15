@@ -521,9 +521,11 @@ export const podcastPage = (site, link, team) => {
     faq: PODCAST_FAQ,
     path: '/new-game-old-game/',
     title: 'New Game Old Game Podcast: Work, Skills, and Careers | No Alumni',
+    ogImage: 'podcast/og.jpg',
+    ogAlt: 'New Game Old Game, the No Alumni podcast: the old game measured credentials, the new game measures capability.',
     description: 'The New Game Old Game podcast from No Alumni, hosted by Matt LaFleur and Greg Snyder: why the old rules of work are breaking and what the New Game requires.',
     schema: [
-      { '@type': 'PodcastSeries', '@id': `${base}/#podcast`, name: 'New Game Old Game', url: `${base}/new-game-old-game/`, description: PODCAST_FAQ[0][1], inLanguage: 'en-US', publisher: { '@id': `${base}/#organization` }, author: hosts.map((h) => ({ '@id': `${base}/who-we-are/#${h.id}` })), sameAs: [spotify, APPLE, youtube] },
+      { '@type': 'PodcastSeries', '@id': `${base}/#podcast`, name: 'New Game Old Game', url: `${base}/new-game-old-game/`, image: `${base}/assets/podcast/cover.jpg`, description: PODCAST_FAQ[0][1], inLanguage: 'en-US', publisher: { '@id': `${base}/#organization` }, author: hosts.map((h) => ({ '@id': `${base}/who-we-are/#${h.id}` })), sameAs: [spotify, APPLE, youtube] },
       ...EPISODES.map((e) => ({ '@type': 'PodcastEpisode', name: `${e.n}: ${e.title}`, url: e.url, datePublished: e.date, timeRequired: `PT${e.mins}M`, description: e.summary, partOfSeries: { '@id': `${base}/#podcast` } })),
     ],
     body: `
@@ -540,7 +542,7 @@ export const podcastPage = (site, link, team) => {
       </div>
       <p class="note-line">Rated 5 out of 5 on Spotify and Apple Podcasts.</p>
     </div>
-    <img class="hero-mark" src="${link('/assets/brand/badge.webp')}" alt="No Alumni badge" width="240" height="240">
+    <img class="hero-mark podcast-mark" src="${link('/assets/podcast/badge.webp')}" alt="New Game Old Game podcast badge: the No Alumni skull mascot in a hard hat, speaking into a microphone" width="480" height="480">
   </div>
 </section>
 <section class="section section-alt">
