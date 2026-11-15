@@ -476,3 +476,128 @@ export function growthPages(site, link) {
   ];
 }
 export { INDUSTRIES };
+
+// ---------------------------------------------------------------- New Game Old Game podcast
+// Episode facts from Apple Podcasts and Spotify (captured 2026-11-15); summaries written in our own words.
+// Old Game / New Game framework from "The No Alumni Basics" (Main Brain, July 2026).
+const APPLE = 'https://podcasts.apple.com/us/podcast/new-game-old-game/id1862546674';
+export const EPISODES = [
+  { n: 'Episode 6', title: 'When Learning Doesn’t Look Like School', date: '2026-03-03', label: 'March 3, 2026', mins: 55, url: `${APPLE}?i=1000752803796`, summary: 'Our first guest episode. Sheila shares how one son went from homeschooling to a PhD in astroparticle physics and another left high school to grow the business he started as a teenager. Not anti-school: a conversation about alignment, ownership, and letting learning look different.' },
+  { n: 'Episode 5', title: 'Re-doing No Alumni Intro & Meet Skullie', date: '2026-02-25', label: 'February 25, 2026', mins: 45, url: `${APPLE}?i=1000751581668`, summary: 'The story behind Skullie, the No Alumni mascot: the forward tilt for momentum, the N and A in the goggles for vision and belonging, and the crack in the skull for scars and shared experience.' },
+  { n: 'Episode 4', title: 'No Alumni to the Bone', date: '2026-02-13', label: 'February 13, 2026', mins: 50, url: `${APPLE}?i=1000749645981`, summary: 'What No Alumni is and why it exists: not anti-college, but anti-outdated thinking. Restoring professional dignity, championing nontraditional paths, and helping businesses rethink how they attract, develop, and keep talent.' },
+  { n: 'Episode 3', title: 'Defining the New Game', date: '2026-01-29', label: 'January 29, 2026', mins: 33, url: `${APPLE}?i=1000747112582`, summary: 'Lessons from CES, RoofCon, and the International Roofing Expo on what the New Game rewards: adaptability, skills, proof of work, and relationships over credentials and linear career paths.' },
+  { n: 'Episode 2, Part II', title: 'Old Game vs. New Game at Work: Linear Careers, Authentic Culture, and AI', date: '2025-12-30', label: 'December 30, 2025', mins: 22, url: `${APPLE}?i=1000743201938`, summary: 'Why linear careers are breaking down, specialists versus generalists, fake “New Game” culture, and why AI raises the premium on human experience and connection.' },
+  { n: 'Episode 2, Part I', title: 'What We Mean by “New Game Old Game” and Why Work Feels Broken', date: '2025-12-26', label: 'December 26, 2025', mins: 27, url: `${APPLE}?i=1000742778587`, summary: 'What the Old Game of work looks like and why it is failing, why feeling stuck is often a systems problem rather than a personal one, and what a more human New Game requires.' },
+  { n: 'Episode 1', title: 'The New Game Old Game Podcast (Pilot)', date: '2025-12-18', label: 'December 18, 2025', mins: 23, url: `${APPLE}?i=1000741877911`, summary: 'The question behind the show: are we still playing the Old Game of work in a New Game world? Not anti-college, not a hustle-guru show, and not one right path.' },
+];
+
+const OLD_NEW = [
+  ['Degrees and pedigree', 'Capability and curiosity'],
+  ['Titles and hierarchy', 'Real contribution and leadership'],
+  ['Test scores and resumes', 'Skills and proof of work'],
+  ['Years of experience', 'Adaptability and lifelong learning'],
+  ['Linear careers, “wait your turn”', 'Many paths: skilled trades, entrepreneurship, reinvention'],
+  ['Compliance and “that’s how we’ve always done it”', 'Human potential, AI readiness, and authentic culture'],
+  ['Hustle culture', 'Meaningful work, time, and purpose'],
+];
+
+const PODCAST_FAQ = [
+  ['What is the New Game Old Game podcast?', 'New Game Old Game is the podcast from No Alumni: conversations about work, skills, alternative careers, leadership, culture, and rehumanizing work in a rapidly changing world. It explores why the Old Game of work (credentials-first thinking, linear careers, and outdated systems) is breaking, and what the New Game requires instead: skills, adaptability, authenticity, and real output.'],
+  ['Who hosts New Game Old Game?', 'The show is hosted by Matt LaFleur and Greg Snyder of No Alumni, a Northeast Ohio company that celebrates every path to success.'],
+  ['What is the difference between the Old Game and the New Game of work?', 'The Old Game measured credentials: degrees, pedigree, titles, test scores, and years of experience. The New Game measures capability: skills, curiosity, adaptability, proof of work, and real contribution. In short, from pedigree to potential.'],
+  ['Is New Game Old Game anti-college?', 'No. The show is not anti-college, not hustle culture, and not about one right path. It is about dignity in work, valuing real skills, and questioning assumptions that no longer serve people or organizations.'],
+  ['Where can I listen to New Game Old Game?', 'New Game Old Game is on Spotify, Apple Podcasts, and YouTube. The show is rated 5 out of 5 on Spotify and Apple Podcasts.'],
+  ['How can an organization move from the Old Game to the New Game?', 'Start with No Alumni’s New Game Readiness Assessment, a short, practical conversation about talent strategy, team culture, workforce readiness, leadership habits, and AI, with clear next steps.'],
+];
+
+export const podcastPage = (site, link, team) => {
+  const base = site.canonicalDomain || '';
+  const spotify = site.socials.find((s) => s.name === 'Spotify').url;
+  const youtube = site.socials.find((s) => s.name === 'YouTube').url;
+  const hosts = team.filter((p) => ['greg-snyder', 'matt-lafleur'].includes(p.id));
+  return {
+    key: 'podcast',
+    crumb: 'New Game Old Game Podcast',
+    faq: PODCAST_FAQ,
+    path: '/new-game-old-game/',
+    title: 'New Game Old Game Podcast: Work, Skills, and Careers | No Alumni',
+    description: 'The New Game Old Game podcast from No Alumni, hosted by Matt LaFleur and Greg Snyder: why the old rules of work are breaking and what the New Game requires.',
+    schema: [
+      { '@type': 'PodcastSeries', '@id': `${base}/#podcast`, name: 'New Game Old Game', url: `${base}/new-game-old-game/`, description: PODCAST_FAQ[0][1], inLanguage: 'en-US', publisher: { '@id': `${base}/#organization` }, author: hosts.map((h) => ({ '@id': `${base}/who-we-are/#${h.id}` })), sameAs: [spotify, APPLE, youtube] },
+      ...EPISODES.map((e) => ({ '@type': 'PodcastEpisode', name: `${e.n}: ${e.title}`, url: e.url, datePublished: e.date, timeRequired: `PT${e.mins}M`, description: e.summary, partOfSeries: { '@id': `${base}/#podcast` } })),
+    ],
+    body: `
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">The No Alumni podcast</p>
+      <h1>New Game Old Game</h1>
+      <p class="lead">Honest conversations about work, skills, alternative careers, leadership, and culture, and why the old rules no longer add up. Hosted by Matt LaFleur and Greg Snyder.</p>
+      <div class="btn-row">
+        <a class="btn btn-fill" href="${spotify}" rel="noopener">Listen on Spotify</a>
+        <a class="btn btn-outline" href="${APPLE}" rel="noopener">Apple Podcasts</a>
+        <a class="btn btn-outline" href="${youtube}" rel="noopener">YouTube</a>
+      </div>
+      <p class="note-line">Rated 5 out of 5 on Spotify and Apple Podcasts.</p>
+    </div>
+    <img class="hero-mark" src="${link('/assets/brand/badge.webp')}" alt="No Alumni badge" width="240" height="240">
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="wrap narrow">
+    <p class="eyebrow">About the show</p>
+    <h2>The old game measured credentials. The new game measures capability.</h2>
+    <p class="lead">New Game Old Game explores why the Old Game of work (credentials-first thinking, linear careers, and outdated systems) is breaking, and what the New Game requires instead: skills, adaptability, authenticity, and real output.</p>
+    <p>This isn’t hype, hustle culture, or anti-college. It’s honest conversation for leaders, trades and technical professionals, parents, educators, and anyone who feels the system no longer works.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">The framework</p>
+    <h2>Old Game vs. New Game</h2>
+    <p class="lead">The future is not about where someone started. It is about what they are capable of becoming.</p>
+    <table class="bands og-ng">
+      <caption>What each game values</caption>
+      <thead><tr><th scope="col">The Old Game valued</th><th scope="col">The New Game values</th></tr></thead>
+      <tbody>${OLD_NEW.map(([o, n]) => `<tr><td>${o}</td><td>${n}</td></tr>`).join('')}</tbody>
+    </table>
+    <p>You do not have to quit your job or your life to play the New Game. You reorient, build real skills, and stop outsourcing your identity to institutions or titles. <strong>From pedigree to potential.</strong></p>
+  </div>
+</section>
+<section class="section section-alt" id="episodes">
+  <div class="wrap">
+    <p class="eyebrow">Listen</p>
+    <h2>Episodes</h2>
+    <ol class="episodes">
+      ${EPISODES.map((e) => `<li class="ep"><div class="ep-meta"><span class="tag">${e.n}</span><span class="muted">${e.label} · ${e.mins} min</span></div><h3><a href="${e.url}" rel="noopener">${esc(e.title)}</a></h3><p>${esc(e.summary)}</p></li>`).join('\n      ')}
+    </ol>
+    <p class="muted">New to the show? Start with Episode 1 and the two-part Episode 2, which lay out the whole framework. All episodes are on <a href="${spotify}" rel="noopener">Spotify</a>, <a href="${APPLE}" rel="noopener">Apple Podcasts</a>, and <a href="${youtube}" rel="noopener">YouTube</a>.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Your hosts</p>
+    <h2>Meet Matt and Greg</h2>
+    <div class="grid grid-2">
+      ${hosts.map((h) => `<div class="person host"><img class="avatar" src="${link(h.photo)}" alt="${esc(h.name)}" width="120" height="120" loading="lazy"><h3>${esc(h.name)}</h3><p class="role">${esc(h.title)}</p><a href="${link(`/who-we-are/#${h.id}`)}">More about ${esc(h.name.split(' ')[0])}</a></div>`).join('')}
+    </div>
+  </div>
+</section>
+<section class="section-tight">
+  <div class="wrap">
+    <div class="band">
+      <p class="eyebrow">For leaders and organizations</p>
+      <h2>Is your organization still playing the Old Game?</h2>
+      <p class="lead">The New Game Readiness Assessment is a short, practical conversation about your talent strategy, team culture, workforce readiness, leadership habits, and AI. Not a high-pressure sales call. The goal is clarity.</p>
+      <div class="btn-row">
+        <a class="btn btn-fill" href="${site.booking.call}" rel="noopener">Book a New Game Readiness Assessment</a>
+        <a class="btn btn-outline" href="${link('/speaking/')}">Bring Matt and Greg to your event</a>
+      </div>
+    </div>
+  </div>
+</section>
+${faqSection(PODCAST_FAQ, 'Podcast questions')}
+<section class="section-tight"><div class="wrap center"><p class="muted">Have a guest or topic idea? <a href="${link('/contact-us/')}">Tell us</a>.</p></div></section>
+`,
+  };
+};

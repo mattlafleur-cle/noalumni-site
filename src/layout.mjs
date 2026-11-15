@@ -11,6 +11,7 @@ const nav = [
   { key: 'our-work', label: 'Our Work', path: '/our-work/' },
   { key: 'who-we-are', label: 'Who We Are', path: '/who-we-are/' },
   { key: 'speaking', label: 'Speaking', path: '/speaking/' },
+  { key: 'podcast', label: 'Podcast', path: '/new-game-old-game/' },
   { key: 'shop', label: 'Shop', path: '/shop/' },
   { key: 'contact-us', label: 'Contact', path: '/contact-us/' },
 ];
@@ -215,7 +216,7 @@ ${body}
     <div>
       <h2 class="footer-h">Follow along</h2>
       <ul class="socials">${socialLinks(site)}</ul>
-      <p class="footer-pod">Listen to <a href="${site.socials.find((s) => s.name === 'Spotify').url}" rel="noopener">New Game Old Game</a>, the No Alumni podcast.</p>
+      <p class="footer-pod">Listen to <a href="${link('/new-game-old-game/')}">New Game Old Game</a>, the No Alumni podcast.</p>
     </div>
   </div>
   <div class="wrap footer-base">

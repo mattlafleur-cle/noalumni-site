@@ -77,6 +77,8 @@ export default {
     { from: 'ppa', to: 'https://results.noalumni.com/ppa/start' },
     { from: 'PPA', to: 'https://results.noalumni.com/ppa/start' },
     { from: 'commodore', to: 'https://results.noalumni.com/commodore/' },
+    { from: 'podcast', to: '/new-game-old-game/' },
+    { from: 'newgameoldgame', to: '/new-game-old-game/' },
     { from: 'book-online', to: 'https://fantastical.app/mattlafleur/no-alumni-intro' },
     // Retired Wix pages: send old links somewhere useful instead of a dead end.
     { from: 'copy-of-view-merch', to: '/shop/' },

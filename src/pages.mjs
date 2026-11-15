@@ -1,7 +1,7 @@
 // Page content. Copy is carried over from the Wix site (captured 2026-11-13), with em dashes removed,
 // casing cleaned up, and light structure added. Each page: { key, path, title, description, body }.
 import { esc, faqSection, siteUrl, areaServed } from './layout.mjs';
-import { growthPages, TYPES, INDUSTRIES } from './growth.mjs';
+import { growthPages, TYPES, INDUSTRIES, podcastPage } from './growth.mjs';
 import { reviews, trustpilot, clients, surveyStats, surveyQuotes, featuredQuotes } from './reviews.mjs';
 
 const typesList = [
@@ -136,7 +136,6 @@ export function pages(site, link) {
   const home = {
     key: 'home',
     crumb: 'Home',
-    schema: [{ '@type': 'PodcastSeries', '@id': `${base}/#podcast`, name: site.podcast.name, description: site.podcast.description, url: site.socials.find((x) => x.name === 'Spotify').url, sameAs: site.socials.filter((x) => ['Spotify', 'Apple Podcasts', 'YouTube'].includes(x.name)).map((x) => x.url), publisher: org, inLanguage: 'en-US' }],
     faq: FAQ.home,
     path: '/',
     title: 'No Alumni | Celebrating Alternative Career Paths and Vocational Joy',
@@ -213,7 +212,8 @@ export function pages(site, link) {
     <div>
       <p class="eyebrow">Listen</p>
       <h2>New Game Old Game</h2>
-      <p>The No Alumni podcast: real stories from people who took a different path.</p>
+      <p>The No Alumni podcast: honest conversations about work, skills, and careers, and why the old rules no longer add up.</p>
+      <p><a class="card-link" href="${link('/new-game-old-game/')}">Explore the show and the Old Game vs. New Game framework</a></p>
       <div class="btn-row">
         <a class="btn btn-outline btn-small" href="${site.socials.find((s) => s.name === 'Spotify').url}" rel="noopener">Spotify</a>
         <a class="btn btn-outline btn-small" href="${site.socials.find((s) => s.name === 'Apple Podcasts').url}" rel="noopener">Apple Podcasts</a>
@@ -622,5 +622,5 @@ ${ctaBand(site, link, 'Want results like these?', 'Start with a short conversati
 `,
   };
 
-  return [home, whatWeOffer, workingGenius, ourWork, whoWeAre, contact, shop, calculator, ...growthPages(site, link), notFound];
+  return [home, whatWeOffer, workingGenius, ourWork, whoWeAre, contact, shop, calculator, ...growthPages(site, link), podcastPage(site, link, team), notFound];
 }
