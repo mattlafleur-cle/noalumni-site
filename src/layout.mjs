@@ -71,6 +71,7 @@ export function baseGraph(site, team = []) {
       '@type': 'Person',
       '@id': `${siteUrl(site)}/who-we-are/#${p.id}`,
       name: p.name,
+      ...(p.title ? { jobTitle: p.title } : {}),
       email: p.email,
       ...(p.photo ? { image: abs(site, p.photo) } : {}),
       worksFor: { '@id': org },

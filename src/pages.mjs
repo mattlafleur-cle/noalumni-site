@@ -51,11 +51,11 @@ const offers = [
 
 // Team, in the order Matt set on 2026-11-13. Dave's email link pointed to matt@ on Wix; fixed here.
 export const team = [
-  { id: 'greg-snyder', name: 'Greg Snyder', email: 'greg@noalumni.com', photo: '/assets/team/greg.webp' },
-  { id: 'matt-lafleur', name: 'Matt LaFleur', email: 'matt@noalumni.com', photo: '/assets/team/matt.webp' },
-  { id: 'dave-hall', name: 'Dave Hall', email: 'dave@noalumni.com', photo: '/assets/team/dave.webp' },
-  { id: 'josh-muller', name: 'Josh Muller', email: 'josh@noalumni.com', photo: '/assets/team/josh.webp' },
-  { id: 'nolan-snyder', name: 'Nolan Snyder', email: 'nolan@noalumni.com', photo: '/assets/team/nolan.webp' },
+  { id: 'greg-snyder', title: 'Chief Executive Officer and Facilitation Master', name: 'Greg Snyder', email: 'greg@noalumni.com', photo: '/assets/team/greg.webp' },
+  { id: 'matt-lafleur', title: 'Chief Integrator and Absolute Financial Clarity', name: 'Matt LaFleur', email: 'matt@noalumni.com', photo: '/assets/team/matt.webp' },
+  { id: 'dave-hall', title: 'Director of Design & Artistry', name: 'Dave Hall', email: 'dave@noalumni.com', photo: '/assets/team/dave.webp' },
+  { id: 'josh-muller', title: 'Chief Visionary and Business Coach', name: 'Josh Muller', email: 'josh@noalumni.com', photo: '/assets/team/josh.webp' },
+  { id: 'nolan-snyder', title: 'Director of Operations & Partnerships', name: 'Nolan Snyder', email: 'nolan@noalumni.com', photo: '/assets/team/nolan.webp' },
 ];
 
 const offerList = 'AI consulting, coaching, and services; certifications, training, and upskilling; a partner and marketplace community; The 6 Types of Working Genius; and workplace culture consulting';
@@ -365,7 +365,7 @@ ${ctaBand(site, link, 'Bring Working Genius to your team.', 'Start with the asse
     <h2>Your neighbors, and we need you to join us.</h2>
     <p class="lead">An expert, eclectic, and specialized team of leaders, innovators, and practitioners who bring diverse strengths together to inspire tomorrow’s workforce and redefine what’s possible.</p>
     <div class="people">
-      ${team.map((p) => `<div class="person" id="${p.id}">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
+      ${team.map((p) => `<div class="person" id="${p.id}">${p.photo ? `<img class="avatar" src="${link(p.photo)}" alt="${esc(p.name)}" width="120" height="120" loading="lazy">` : `<div class="avatar" aria-hidden="true">${initials(p.name)}</div>`}<h3>${esc(p.name)}</h3><p class="role">${esc(p.title)}</p><a href="mailto:${p.email}?subject=Email%20from%20Website">${p.email}</a></div>`).join('\n      ')}
     </div>
   </div>
 </section>
