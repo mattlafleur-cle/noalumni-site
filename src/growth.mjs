@@ -637,7 +637,7 @@ ${faqSection(PODCAST_FAQ, 'Podcast questions')}
 const MCA = {
   url: 'https://maplecreekadvisors.com/',
   booking: 'https://fantastical.app/mattlafleur/maple-creek-advisors',
-  // Co-founders (Matt, 2026-11-15): No Alumni = Greg and Matt; Maple Creek Advisors = Josh and Matt.
+  // Co-founders (Matt, 2026-11-15/18): No Alumni = Greg, Matt, and Dave Hall; Maple Creek Advisors = Josh and Matt.
   naFounders: ['greg-snyder', 'matt-lafleur'],
   mcaFounders: ['josh-muller', 'matt-lafleur'],
   roles: { 'greg-snyder': 'Chief Culture and Team-Building Engineer', 'matt-lafleur': 'Financial clarity, strategy, and operations', 'josh-muller': 'Coaching, leadership, and vision' },
@@ -645,7 +645,7 @@ const MCA = {
 const MAPLE_FAQ = [
   ['Are No Alumni and Maple Creek Advisors the same company?', 'They are two separate rooms, led by the same crew: Greg Snyder, Matt LaFleur, and Josh Muller. No Alumni focuses on culture, careers, and The 6 Types of Working Genius for teams, schools, and events. Maple Creek Advisors focuses on business coaching, fractional CFO services, and advisory work for owner-led businesses.'],
   ['Should I contact No Alumni or Maple Creek Advisors?', 'Contact No Alumni for a keynote, workshop, team session, school program, or anything about careers and culture. Contact Maple Creek Advisors for ongoing business coaching, fractional CFO support, advisory work, or help preparing to sell a business. If you are not sure, contact either one. You will reach the same people.'],
-  ['Who founded No Alumni and Maple Creek Advisors?', 'Greg Snyder and Matt LaFleur co-founded No Alumni. Josh Muller and Matt LaFleur co-founded Maple Creek Advisors. All three work across both.'],
+  ['Who founded No Alumni and Maple Creek Advisors?', 'Greg Snyder, Matt LaFleur, and Dave Hall co-founded No Alumni. Josh Muller and Matt LaFleur co-founded Maple Creek Advisors. Greg, Matt, and Josh work across both.'],
   ['Do both offer The 6 Types of Working Genius?', 'Yes. Greg Snyder, a Certified Working Genius Facilitator, leads Working Genius work for both. No Alumni brings it to keynotes, workshops, and team sessions. Maple Creek Advisors uses it inside ongoing coaching and advisory work with owner-led companies.'],
   ['Where are No Alumni and Maple Creek Advisors based?', 'Both are based in Northeast Ohio. Maple Creek Advisors has offices in Cuyahoga Falls and Elyria. No Alumni works with clients and companies across the country and around the world.'],
 ];
